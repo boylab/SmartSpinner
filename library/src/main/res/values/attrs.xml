@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="popupTextAlignment" format="enum">
+        <enum name="start" value="0" />
+        <enum name="end" value="1" />
+        <enum name="center" value="2" />
+    </attr>
+
+    <declare-styleable name="SmartSpinner">
+        <!--spinner background、文字背景-->
+        <attr name="backgroundSelector" format="integer" />
+        <attr name="textTint" format="color" />
+
+        <!--arrow ishide、tint、drawable-->
+        <attr name="hideArrow" format="boolean" />
+        <attr name="arrowTint" format="color" />
+        <attr name="arrowDrawable" format="reference|color" />
+
+        <attr name="dropDownListPaddingBottom" format="dimension" />
+        <attr name="popupTextAlignment" />
+
+        <attr name="entries" format="reference" />
+    </declare-styleable>
+</resources>
