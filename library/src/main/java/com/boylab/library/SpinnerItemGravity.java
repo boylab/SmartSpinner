@@ -1,18 +1,18 @@
 package com.boylab.library;
 
-enum PopUpTextAlignment {
+enum SpinnerItemGravity {
     START(0),
     END(1),
     CENTER(2);
 
     private final int id;
 
-    PopUpTextAlignment(int id) {
+    SpinnerItemGravity(int id) {
         this.id = id;
     }
 
-    static PopUpTextAlignment fromId(int id) {
-        for (PopUpTextAlignment value : values()) {
+    static SpinnerItemGravity fromId(int id) {
+        for (SpinnerItemGravity value : values()) {
             if (value.id == id) return value;
         }
         return CENTER;

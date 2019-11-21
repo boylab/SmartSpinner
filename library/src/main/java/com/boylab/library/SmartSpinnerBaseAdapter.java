@@ -29,8 +29,8 @@ import androidx.core.content.ContextCompat;
 @SuppressWarnings("unused")
 public abstract class SmartSpinnerBaseAdapter<T> extends BaseAdapter {
 
-    private final PopUpTextAlignment horizontalAlignment;
-    private final SpinnerTextFormatter spinnerTextFormatter;
+    private final SpinnerItemGravity horizontalAlignment;
+    private final TextFormat spinnerTextFormat;
 
     private int textColor;
     private int backgroundSelector;
@@ -41,10 +41,10 @@ public abstract class SmartSpinnerBaseAdapter<T> extends BaseAdapter {
             Context context,
             int textColor,
             int backgroundSelector,
-            SpinnerTextFormatter spinnerTextFormatter,
-            PopUpTextAlignment horizontalAlignment
+            TextFormat spinnerTextFormat,
+            SpinnerItemGravity horizontalAlignment
     ) {
-        this.spinnerTextFormatter = spinnerTextFormatter;
+        this.spinnerTextFormat = spinnerTextFormat;
         this.backgroundSelector = backgroundSelector;
         this.textColor = textColor;
         this.horizontalAlignment = horizontalAlignment;
@@ -67,7 +67,7 @@ public abstract class SmartSpinnerBaseAdapter<T> extends BaseAdapter {
             textView = ((ViewHolder) convertView.getTag()).textView;
         }
 
-        textView.setText(spinnerTextFormatter.format(getItem(position)));
+        textView.setText(spinnerTextFormat.format(getItem(position)));
         textView.setTextColor(textColor);
 
         setTextHorizontalAlignment(textView);

@@ -27,10 +27,10 @@ public class SmartSpinnerAdapterWrapper extends SmartSpinnerBaseAdapter {
             ListAdapter toWrap,
             int textColor,
             int backgroundSelector,
-            SpinnerTextFormatter spinnerTextFormatter,
-            PopUpTextAlignment horizontalAlignment
+            TextFormat spinnerTextFormat,
+            SpinnerItemGravity horizontalAlignment
     ) {
-        super(context, textColor, backgroundSelector, spinnerTextFormatter, horizontalAlignment);
+        super(context, textColor, backgroundSelector, spinnerTextFormat, horizontalAlignment);
         baseAdapter = toWrap;
     }
 

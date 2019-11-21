@@ -2,7 +2,7 @@ package com.boylab.library;
 
 import android.text.Spannable;
 
-public interface SpinnerTextFormatter<T> {
+public interface TextFormat<T> {
 
     Spannable format(T item);
 }

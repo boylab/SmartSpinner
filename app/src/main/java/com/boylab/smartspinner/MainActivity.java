@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Spinner;
 
 import com.boylab.library.SmartSpinner;
 
@@ -24,5 +25,8 @@ public class MainActivity extends AppCompatActivity {
         List<String> dataset = new LinkedList<>(Arrays.asList("One", "Two", "Three", "Four", "Five"));
         Log.i(">>>boylab>>", ">>>onCreate: "+dataset.size());
         smartSpinner.attachDataSource(dataset);
+
+
+
     }
 }

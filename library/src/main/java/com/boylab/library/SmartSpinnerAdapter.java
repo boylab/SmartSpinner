@@ -1,7 +1,6 @@
 package com.boylab.library;
 
 import android.content.Context;
-import android.util.Log;
 
 import java.util.List;
 
@@ -29,9 +28,9 @@ public class SmartSpinnerAdapter<T> extends SmartSpinnerBaseAdapter {
             List<T> items,
             int textColor,
             int backgroundSelector,
-            SpinnerTextFormatter spinnerTextFormatter,
-            PopUpTextAlignment horizontalAlignment) {
-        super(context, textColor, backgroundSelector, spinnerTextFormatter, horizontalAlignment);
+            TextFormat spinnerTextFormat,
+            SpinnerItemGravity horizontalAlignment) {
+        super(context, textColor, backgroundSelector, spinnerTextFormat, horizontalAlignment);
         this.items = items;
     }
 
@@ -47,7 +46,6 @@ public class SmartSpinnerAdapter<T> extends SmartSpinnerBaseAdapter {
 
     @Override
     public T getItemInDataset(int position) {
-        Log.i(">>>boylab>>", ">>>getItemInDataset: position = "+position);
         if (!items.isEmpty()){
             return items.get(position);
         }

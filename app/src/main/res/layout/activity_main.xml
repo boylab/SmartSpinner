@@ -7,6 +7,11 @@
     android:background="@android:color/holo_blue_light"
     tools:context=".MainActivity">
 
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <com.boylab.library.SmartSpinner
         android:id="@+id/smart_Spinner"
         android:layout_width="wrap_content"

@@ -67,7 +67,7 @@ public class SmartSpinner extends AppCompatTextView {
 
     private AdapterView.OnItemClickListener onItemClickListener;
     private AdapterView.OnItemSelectedListener onItemSelectedListener;
-    private OnSpinnerItemSelectedListener onSpinnerItemSelectedListener;
+    private OnSpinnerItemListener onSpinnerItemListener;
 
     private boolean isArrowHidden;
     private int textColor;
@@ -78,9 +78,9 @@ public class SmartSpinner extends AppCompatTextView {
     private int dropDownListPaddingBottom;
     private @DrawableRes
     int arrowDrawableResId;
-    private SpinnerTextFormatter spinnerTextFormatter = new SimpleSpinnerTextFormatter();
-    private SpinnerTextFormatter selectedTextFormatter = new SimpleSpinnerTextFormatter();
-    private PopUpTextAlignment horizontalAlignment;
+    private TextFormat spinnerTextFormatter = new SpinnerTextFormat();
+    private TextFormat selectedTextFormatter = new SpinnerTextFormat();
+    private SpinnerItemGravity horizontalAlignment;
 
     @Nullable
     private ObjectAnimator arrowAnimator = null;
@@ -162,8 +162,8 @@ public class SmartSpinner extends AppCompatTextView {
                 }*/
                 selectedIndex = position;
 
-                if (onSpinnerItemSelectedListener != null) {
-                    onSpinnerItemSelectedListener.onItemSelected(SmartSpinner.this, view, position, id);
+                if (onSpinnerItemListener != null) {
+                    onSpinnerItemListener.onItemClick(SmartSpinner.this, view, position, id);
                 }
 
                 if (onItemClickListener != null) {
@@ -193,12 +193,12 @@ public class SmartSpinner extends AppCompatTextView {
             }
         });
 
-        isArrowHidden = typedArray.getBoolean(R.styleable.SmartSpinner_hideArrow, false);
+        isArrowHidden = typedArray.getBoolean(R.styleable.SmartSpinner_arrowHide, false);
         arrowDrawableTint = typedArray.getColor(R.styleable.SmartSpinner_arrowTint, getResources().getColor(android.R.color.black));
         arrowDrawableResId = typedArray.getResourceId(R.styleable.SmartSpinner_arrowDrawable, R.drawable.smart_arrow);
 
         dropDownListPaddingBottom = typedArray.getDimensionPixelSize(R.styleable.SmartSpinner_dropDownListPaddingBottom, 0);
-        horizontalAlignment = PopUpTextAlignment.fromId(typedArray.getInt(R.styleable.SmartSpinner_popupTextAlignment, PopUpTextAlignment.CENTER.ordinal()));
+        horizontalAlignment = SpinnerItemGravity.fromId(typedArray.getInt(R.styleable.SmartSpinner_spinnerItemGravity, SpinnerItemGravity.CENTER.ordinal()));
 
         CharSequence[] entries = typedArray.getTextArray(R.styleable.SmartSpinner_entries);
         if (entries != null) {
@@ -330,7 +330,7 @@ public class SmartSpinner extends AppCompatTextView {
 
 
     /**
-     * @deprecated use setOnSpinnerItemSelectedListener instead.
+     * @deprecated use setOnSpinnerItemListener instead.
      */
     @Deprecated
     public void addOnItemClickListener(AdapterView.OnItemClickListener onItemClickListener) {
@@ -338,7 +338,7 @@ public class SmartSpinner extends AppCompatTextView {
     }
 
     /**
-     * @deprecated use setOnSpinnerItemSelectedListener instead.
+     * @deprecated use setOnSpinnerItemListener instead.
      */
     @Deprecated
     public void setOnItemSelectedListener(AdapterView.OnItemSelectedListener onItemSelectedListener) {
@@ -356,7 +356,7 @@ public class SmartSpinner extends AppCompatTextView {
         setAdapterInternal(this.adapter);
     }
 
-    public PopUpTextAlignment getPopUpTextAlignment() {
+    public SpinnerItemGravity getPopUpTextAlignment() {
         return horizontalAlignment;
     }
 
@@ -458,12 +458,12 @@ public class SmartSpinner extends AppCompatTextView {
         return dropDownListPaddingBottom;
     }
 
-    public void setSpinnerTextFormatter(SpinnerTextFormatter spinnerTextFormatter) {
-        this.spinnerTextFormatter = spinnerTextFormatter;
+    public void setSpinnerTextFormatter(TextFormat spinnerTextFormat) {
+        this.spinnerTextFormatter = spinnerTextFormat;
     }
 
-    public void setSelectedTextFormatter(SpinnerTextFormatter textFormatter) {
-        this.selectedTextFormatter = textFormatter;
+    public void setSelectedTextFormatter(TextFormat textFormat) {
+        this.selectedTextFormatter = textFormat;
     }
 
 
@@ -486,12 +486,12 @@ public class SmartSpinner extends AppCompatTextView {
         }
     }
 
-    public OnSpinnerItemSelectedListener getOnSpinnerItemSelectedListener() {
-        return onSpinnerItemSelectedListener;
+    public OnSpinnerItemListener getOnSpinnerItemListener() {
+        return onSpinnerItemListener;
     }
 
-    public void setOnSpinnerItemSelectedListener(OnSpinnerItemSelectedListener onSpinnerItemSelectedListener) {
-        this.onSpinnerItemSelectedListener = onSpinnerItemSelectedListener;
+    public void setOnSpinnerItemListener(OnSpinnerItemListener onSpinnerItemListener) {
+        this.onSpinnerItemListener = onSpinnerItemListener;
     }
 
 
