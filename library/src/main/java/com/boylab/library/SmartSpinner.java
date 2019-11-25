@@ -75,7 +75,7 @@ public class SmartSpinner extends AppCompatTextView {
     private int arrowDrawableTint;
     private int displayHeight;
     private int parentVerticalOffset;
-    private int dropDownListPaddingBottom;
+    private int itemPaddingBottom;
     private @DrawableRes
     int arrowDrawableResId;
     private TextFormat spinnerTextFormatter = new SpinnerTextFormat();
@@ -197,8 +197,8 @@ public class SmartSpinner extends AppCompatTextView {
         arrowDrawableTint = typedArray.getColor(R.styleable.SmartSpinner_arrowTint, getResources().getColor(android.R.color.black));
         arrowDrawableResId = typedArray.getResourceId(R.styleable.SmartSpinner_arrowDrawable, R.drawable.smart_arrow);
 
-        dropDownListPaddingBottom = typedArray.getDimensionPixelSize(R.styleable.SmartSpinner_dropDownListPaddingBottom, 0);
-        horizontalAlignment = SpinnerItemGravity.fromId(typedArray.getInt(R.styleable.SmartSpinner_spinnerItemGravity, SpinnerItemGravity.CENTER.ordinal()));
+        itemPaddingBottom = typedArray.getDimensionPixelSize(R.styleable.SmartSpinner_itemPaddingBottom, 0);
+        horizontalAlignment = SpinnerItemGravity.fromId(typedArray.getInt(R.styleable.SmartSpinner_itemGravity, SpinnerItemGravity.CENTER.ordinal()));
 
         CharSequence[] entries = typedArray.getTextArray(R.styleable.SmartSpinner_entries);
         if (entries != null) {
@@ -450,12 +450,12 @@ public class SmartSpinner extends AppCompatTextView {
         return isArrowHidden;
     }
 
-    public void setDropDownListPaddingBottom(int paddingBottom) {
-        dropDownListPaddingBottom = paddingBottom;
+    public void setItemPaddingBottom(int paddingBottom) {
+        itemPaddingBottom = paddingBottom;
     }
 
-    public int getDropDownListPaddingBottom() {
-        return dropDownListPaddingBottom;
+    public int getItemPaddingBottom() {
+        return itemPaddingBottom;
     }
 
     public void setSpinnerTextFormatter(TextFormat spinnerTextFormat) {
