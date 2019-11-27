@@ -69,18 +69,25 @@ public class SmartSpinner extends AppCompatTextView {
     private AdapterView.OnItemSelectedListener onItemSelectedListener;
     private OnSpinnerItemListener onSpinnerItemListener;
 
-    private boolean isArrowHidden;
-    private int textColor;
     private int backgroundSelector;
-    private int arrowDrawableTint;
+    private int textTint;
+
+    private boolean isArrowHidden;
+    private int arrowTint;
+    private @DrawableRes int arrowDrawableResId;
+
+    private int itemPaddingTop, itemPaddingLeft, itemPaddingBottom, itemPaddingRight;
+    private @DrawableRes int itemDrawableResId;
+    private SpinnerItemGravity itemGravity;
+    private boolean itemChecked ;
+    private int itemMaxList;
+
     private int displayHeight;
     private int parentVerticalOffset;
-    private int itemPaddingBottom;
-    private @DrawableRes
-    int arrowDrawableResId;
+
     private TextFormat spinnerTextFormatter = new SpinnerTextFormat();
     private TextFormat selectedTextFormatter = new SpinnerTextFormat();
-    private SpinnerItemGravity horizontalAlignment;
+
 
     @Nullable
     private ObjectAnimator arrowAnimator = null;
@@ -149,8 +156,8 @@ public class SmartSpinner extends AppCompatTextView {
         setClickable(true);
         backgroundSelector = typedArray.getResourceId(R.styleable.SmartSpinner_backgroundSelector, R.drawable.selector);
         setBackgroundResource(backgroundSelector);
-        textColor = typedArray.getColor(R.styleable.SmartSpinner_textTint, getDefaultTextColor(context));
-        setTextColor(textColor);
+        textTint = typedArray.getColor(R.styleable.SmartSpinner_textTint, getDefaultTextColor(context));
+        setTextColor(textTint);
         popupWindow = new ListPopupWindow(context);
         popupWindow.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -194,11 +201,17 @@ public class SmartSpinner extends AppCompatTextView {
         });
 
         isArrowHidden = typedArray.getBoolean(R.styleable.SmartSpinner_arrowHide, false);
-        arrowDrawableTint = typedArray.getColor(R.styleable.SmartSpinner_arrowTint, getResources().getColor(android.R.color.black));
+        arrowTint = typedArray.getColor(R.styleable.SmartSpinner_arrowTint, getResources().getColor(android.R.color.black));
         arrowDrawableResId = typedArray.getResourceId(R.styleable.SmartSpinner_arrowDrawable, R.drawable.smart_arrow);
 
+        itemPaddingTop = typedArray.getDimensionPixelSize(R.styleable.SmartSpinner_itemPaddingTop, 0);
+        itemPaddingLeft = typedArray.getDimensionPixelSize(R.styleable.SmartSpinner_itemPaddingLeft, 0);
         itemPaddingBottom = typedArray.getDimensionPixelSize(R.styleable.SmartSpinner_itemPaddingBottom, 0);
-        horizontalAlignment = SpinnerItemGravity.fromId(typedArray.getInt(R.styleable.SmartSpinner_itemGravity, SpinnerItemGravity.CENTER.ordinal()));
+        itemPaddingRight = typedArray.getDimensionPixelSize(R.styleable.SmartSpinner_itemPaddingRight, 0);
+        itemDrawableResId = typedArray.getResourceId(R.styleable.SmartSpinner_itemDrawable, R.drawable.smart_arrow);
+        itemGravity = SpinnerItemGravity.fromId(typedArray.getInt(R.styleable.SmartSpinner_itemGravity, SpinnerItemGravity.CENTER.ordinal()));
+        itemChecked = typedArray.getBoolean(R.styleable.SmartSpinner_itemChecked, false);
+        itemMaxList = typedArray.getInt(R.styleable.SmartSpinner_itemMaxList, 5);
 
         CharSequence[] entries = typedArray.getTextArray(R.styleable.SmartSpinner_entries);
         if (entries != null) {
@@ -243,7 +256,7 @@ public class SmartSpinner extends AppCompatTextView {
     @Override
     protected void onVisibilityChanged(View changedView, int visibility) {
         super.onVisibilityChanged(changedView, visibility);
-        arrowDrawable = initArrowDrawable(arrowDrawableTint);
+        arrowDrawable = initArrowDrawable(arrowTint);
         setArrowDrawableOrHide(arrowDrawable);
     }
 
@@ -346,18 +359,18 @@ public class SmartSpinner extends AppCompatTextView {
     }
 
     public <T> void attachDataSource(@NonNull List<T> list) {
-        adapter = new SmartSpinnerAdapter<>(getContext(), list, textColor, backgroundSelector, spinnerTextFormatter, horizontalAlignment);
+        adapter = new SmartSpinnerAdapter<>(getContext(), list, textTint, backgroundSelector, spinnerTextFormatter, itemGravity);
         setAdapterInternal(adapter);
     }
 
     public void setAdapter(ListAdapter adapter) {
-        this.adapter = new SmartSpinnerAdapterWrapper(getContext(), adapter, textColor, backgroundSelector,
-                spinnerTextFormatter, horizontalAlignment);
+        this.adapter = new SmartSpinnerAdapterWrapper(getContext(), adapter, textTint, backgroundSelector,
+                spinnerTextFormatter, itemGravity);
         setAdapterInternal(this.adapter);
     }
 
     public SpinnerItemGravity getPopUpTextAlignment() {
-        return horizontalAlignment;
+        return itemGravity;
     }
 
     private <T> void setAdapterInternal(SmartSpinnerBaseAdapter<T> adapter) {
