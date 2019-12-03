@@ -88,7 +88,6 @@ public class SmartSpinner extends AppCompatTextView {
     private TextFormat spinnerTextFormatter = new SpinnerTextFormat();
     private TextFormat selectedTextFormatter = new SpinnerTextFormat();
 
-
     @Nullable
     private ObjectAnimator arrowAnimator = null;
 
@@ -148,12 +147,12 @@ public class SmartSpinner extends AppCompatTextView {
     private void init(Context context, AttributeSet attrs) {
         Resources resources = getResources();
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SmartSpinner);
-        int defaultPadding = resources.getDimensionPixelSize(R.dimen.one_and_a_half_grid_unit);
 
+        int defaultPadding = resources.getDimensionPixelSize(R.dimen.one_and_a_half_grid_unit);
         setGravity(Gravity.CENTER_VERTICAL | Gravity.START);
-        setPadding(resources.getDimensionPixelSize(R.dimen.three_grid_unit), defaultPadding, defaultPadding,
-                defaultPadding);
+        setPadding(resources.getDimensionPixelSize(R.dimen.three_grid_unit), defaultPadding, defaultPadding, defaultPadding);
         setClickable(true);
+
         backgroundSelector = typedArray.getResourceId(R.styleable.SmartSpinner_backgroundSelector, R.drawable.selector);
         setBackgroundResource(backgroundSelector);
         textTint = typedArray.getColor(R.styleable.SmartSpinner_textTint, getDefaultTextColor(context));
@@ -340,8 +339,6 @@ public class SmartSpinner extends AppCompatTextView {
         }
     }
 
-
-
     /**
      * @deprecated use setOnSpinnerItemListener instead.
      */
@@ -423,6 +420,38 @@ public class SmartSpinner extends AppCompatTextView {
             listView.setHorizontalFadingEdgeEnabled(false);
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     private int getPopUpHeight() {
