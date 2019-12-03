@@ -12,8 +12,6 @@ import android.widget.Checkable;
 import androidx.collection.LongSparseArray;
 import androidx.recyclerview.widget.RecyclerView;
 
-import static android.os.Build.VERSION_CODES.HONEYCOMB;
-
 public class ItemSelectionSupport {
     public static final int INVALID_POSITION = -1;
 
@@ -215,11 +213,11 @@ public class ItemSelectionSupport {
         updateOnScreenCheckedViews();
     }
 
-    @TargetApi(HONEYCOMB)
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public void setViewChecked(View view, boolean checked) {
         if (view instanceof Checkable) {
             ((Checkable) view).setChecked(checked);
-        } else if (Build.VERSION.SDK_INT >= HONEYCOMB) {
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             view.setActivated(checked);
         }
     }
