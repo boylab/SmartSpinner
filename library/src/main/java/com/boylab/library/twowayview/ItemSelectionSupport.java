@@ -1,16 +1,20 @@
-package org.lucasr.twowayview;
+package com.boylab.library.twowayview;
 
 import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
+import androidx.collection.LongSparseArray;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.Adapter;
 import android.util.SparseBooleanArray;
 import android.view.View;
 import android.widget.Checkable;
 
-import androidx.collection.LongSparseArray;
-import androidx.recyclerview.widget.RecyclerView;
+import com.boylab.library.R;
+
+import static android.os.Build.VERSION_CODES.HONEYCOMB;
 
 public class ItemSelectionSupport {
     public static final int INVALID_POSITION = -1;
@@ -130,7 +134,7 @@ public class ItemSelectionSupport {
      * @return A new array which contains the id of each checked item in the
      *         list.
      *
-     * @see android.support.v7.widget.RecyclerView.Adapter#hasStableIds()
+     * @see RecyclerView.Adapter#hasStableIds()
      */
     public long[] getCheckedItemIds() {
         if (mChoiceMode == ChoiceMode.NONE
@@ -161,7 +165,7 @@ public class ItemSelectionSupport {
             return;
         }
 
-        final RecyclerView.Adapter adapter = mRecyclerView.getAdapter();
+        final Adapter adapter = mRecyclerView.getAdapter();
 
         if (mChoiceMode == ChoiceMode.MULTIPLE) {
             boolean oldValue = mCheckedStates.get(position);
@@ -213,11 +217,11 @@ public class ItemSelectionSupport {
         updateOnScreenCheckedViews();
     }
 
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    @TargetApi(HONEYCOMB)
     public void setViewChecked(View view, boolean checked) {
         if (view instanceof Checkable) {
             ((Checkable) view).setChecked(checked);
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+        } else if (Build.VERSION.SDK_INT >= HONEYCOMB) {
             view.setActivated(checked);
         }
     }
@@ -268,7 +272,7 @@ public class ItemSelectionSupport {
                 mCheckedStates = new CheckedStates();
             }
 
-            final RecyclerView.Adapter adapter = mRecyclerView.getAdapter();
+            final Adapter adapter = mRecyclerView.getAdapter();
             if (mCheckedIdStates == null && adapter != null && adapter.hasStableIds()) {
                 mCheckedIdStates = new CheckedIdStates();
             }
@@ -276,7 +280,7 @@ public class ItemSelectionSupport {
     }
 
     public void onAdapterDataChanged() {
-        final RecyclerView.Adapter adapter = mRecyclerView.getAdapter();
+        final Adapter adapter = mRecyclerView.getAdapter();
         if (mChoiceMode == ChoiceMode.NONE || adapter == null || !adapter.hasStableIds()) {
             return;
         }
@@ -473,7 +477,7 @@ public class ItemSelectionSupport {
 
         @Override
         boolean performItemClick(RecyclerView parent, View view, int position, long id) {
-            final RecyclerView.Adapter adapter = mRecyclerView.getAdapter();
+            final Adapter adapter = mRecyclerView.getAdapter();
             boolean checkedStateChanged = false;
 
             if (mChoiceMode == ChoiceMode.MULTIPLE) {

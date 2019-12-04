@@ -1,15 +1,14 @@
-package org.lucasr.twowayview;
+package com.boylab.library.twowayview;
 
-import android.content.Context;
 import android.os.Build;
+import androidx.core.view.GestureDetectorCompat;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.OnItemTouchListener;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
 
-import androidx.core.view.GestureDetectorCompat;
-import androidx.recyclerview.widget.RecyclerView;
-
-abstract class ClickItemTouchListener implements RecyclerView.OnItemTouchListener {
+abstract class ClickItemTouchListener implements OnItemTouchListener {
     private static final String LOGTAG = "ClickItemTouchListener";
 
     private final GestureDetectorCompat mGestureDetector;

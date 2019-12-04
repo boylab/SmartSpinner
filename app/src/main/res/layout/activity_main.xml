@@ -7,19 +7,49 @@
     android:background="@android:color/holo_blue_light"
     tools:context=".MainActivity">
 
-    <Spinner
-        android:id="@+id/spinner"
+    <FrameLayout
+        android:id="@+id/framelaout1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <com.boylab.library.SmartSpinner
-        android:id="@+id/smart_Spinner"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:background="@drawable/spinner_drawable"
-        app:arrowDrawable="@drawable/smart_arrow_ds15"
-        app:arrowTint="@android:color/darker_gray"
-        android:padding="15dp"/>
+        android:background="@color/colorAccent"
+        android:padding="20dp">
+
+        <com.boylab.library.SmartSpinner
+            android:id="@+id/smart_Spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:background="@drawable/spinner_drawable"
+            app:arrowDrawable="@drawable/smart_arrow_ds15"
+            app:arrowTint="@android:color/darker_gray"
+            android:padding="15dp"/>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/framelaout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:layout_below="@+id/framelaout1"
+        android:padding="20dp">
+
+        <Button
+            android:id="@+id/click"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="点击"
+            android:layout_gravity="center"
+            android:layout_marginRight="50dp"/>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/framelaout2" />
 
 </RelativeLayout>

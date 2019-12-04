@@ -14,22 +14,23 @@
  * limitations under the License.
  */
 
-package org.lucasr.twowayview.widget;
+package com.boylab.library.twowayview.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Parcel;
 import android.os.Parcelable;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.Recycler;
+import androidx.recyclerview.widget.RecyclerView.State;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.MarginLayoutParams;
 
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.boylab.library.R;
 
-import org.lucasr.twowayview.widget.Lanes.LaneInfo;
+import com.boylab.library.twowayview.widget.Lanes.LaneInfo;
 
 public class SpannableGridLayoutManager extends GridLayoutManager {
     private static final String LOGTAG = "SpannableGridLayoutManager";
@@ -172,7 +173,7 @@ public class SpannableGridLayoutManager extends GridLayoutManager {
     }
 
     @Override
-    protected void moveLayoutToPosition(int position, int offset, RecyclerView.Recycler recycler, RecyclerView.State state) {
+    protected void moveLayoutToPosition(int position, int offset, Recycler recycler, State state) {
         final boolean isVertical = isVertical();
         final Lanes lanes = getLanes();
 

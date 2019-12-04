@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-   Copyright (C) 2014 Lucas Rocha
+   Copyright (C) 2012 Lucas Rocha
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -15,11 +15,13 @@
    limitations under the License.
 -->
 
-<resources>
-
-    <!--<item name="twowayview_item_click_support" type="id"/>
-    <item name="twowayview_item_selection_support" type="id"/>-->
-    <item name="twowayview_item_click_support" type="id"/>
-    <item name="twowayview_item_selection_support" type="id"/>
-
-</resources>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/title"
+    android:layout_width="60dp"
+    android:layout_height="40dp"
+    android:gravity="center"
+    android:textColor="#999999"
+    android:textStyle="bold"
+    android:textSize="22sp"
+    android:text="11"
+    android:background="@drawable/item_background"/>

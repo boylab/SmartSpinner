@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.lucasr.twowayview.widget;
+package com.boylab.library.twowayview.widget;
 
 import android.graphics.Rect;
 
-import org.lucasr.twowayview.TwoWayLayoutManager.Direction;
-import org.lucasr.twowayview.TwoWayLayoutManager.Orientation;
+import com.boylab.library.twowayview.TwoWayLayoutManager.Direction;
+import com.boylab.library.twowayview.TwoWayLayoutManager.Orientation;
 
 class Lanes {
     public static final int NO_LANE = -1;

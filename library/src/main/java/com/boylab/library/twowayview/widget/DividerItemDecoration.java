@@ -1,24 +1,24 @@
-package org.lucasr.twowayview.widget;
+package com.boylab.library.twowayview.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.ItemDecoration;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup.MarginLayoutParams;
 
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.boylab.library.R;
 
 /**
- * {@link android.support.v7.widget.RecyclerView.ItemDecoration} that draws
+ * {@link RecyclerView.ItemDecoration} that draws
  * vertical and horizontal dividers between the items of the target
- * {@link android.support.v7.widget.RecyclerView}.
+ * {@link RecyclerView}.
  */
-public class DividerItemDecoration extends RecyclerView.ItemDecoration {
+public class DividerItemDecoration extends ItemDecoration {
     private final ItemSpacingOffsets mItemSpacing;
 
     private final Drawable mVerticalDivider;

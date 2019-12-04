@@ -1,6 +1,13 @@
 package com.boylab.library;
 
 import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
@@ -19,22 +26,44 @@ import java.util.List;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-public class SmartSpinnerAdapter<T> extends SmartSpinnerBaseAdapter {
+public class SmartSpinnerAdapter extends LayoutAdapter {
 
-    private final List<T> items;
+    private List<String> items;
 
-    SmartSpinnerAdapter(
-            Context context,
-            List<T> items,
-            int textColor,
-            int backgroundSelector,
-            TextFormat spinnerTextFormat,
-            SpinnerItemGravity horizontalAlignment) {
-        super(context, textColor, backgroundSelector, spinnerTextFormat, horizontalAlignment);
+    public static class SimpleViewHolder extends RecyclerView.ViewHolder {
+        public final TextView title;
+
+        public SimpleViewHolder(View view) {
+            super(view);
+            title = view.findViewById(R.id.title);
+        }
+    }
+
+    public SmartSpinnerAdapter(Context context, List<String> items, int textColor, int backgroundSelector,SpinnerItemGravity horizontalAlignment) {
+        super(context, textColor, backgroundSelector, horizontalAlignment);
         this.items = items;
     }
 
     @Override
+    public String getItemText(int position) {
+        return items.get(position);
+    }
+
+    @Override
+    public String getItemInDataset(int position) {
+        if (!items.isEmpty()){
+            return items.get(position);
+        }
+        return null;
+    }
+
+    @Override
+    public int getItemCount() {
+        return items.size();
+    }
+
+
+    /*@Override
     public int getCount() {
         return items.size();
     }
@@ -50,5 +79,5 @@ public class SmartSpinnerAdapter<T> extends SmartSpinnerBaseAdapter {
             return items.get(position);
         }
         return null;
-    }
+    }*/
 }

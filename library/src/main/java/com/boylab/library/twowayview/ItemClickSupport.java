@@ -1,10 +1,11 @@
-package org.lucasr.twowayview;
+package com.boylab.library.twowayview;
 
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.HapticFeedbackConstants;
 import android.view.SoundEffectConstants;
 import android.view.View;
 
-import androidx.recyclerview.widget.RecyclerView;
+import com.boylab.library.R;
 
 public class ItemClickSupport {
     /**

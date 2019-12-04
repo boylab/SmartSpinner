@@ -1,12 +1,10 @@
-package org.lucasr.twowayview.widget;
+package com.boylab.library.twowayview.widget;
 
 import android.graphics.Rect;
-import android.view.View;
-
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.lucasr.twowayview.TwoWayLayoutManager.Direction;
-import org.lucasr.twowayview.widget.Lanes.LaneInfo;
+import com.boylab.library.twowayview.TwoWayLayoutManager.Direction;
+import com.boylab.library.twowayview.widget.Lanes.LaneInfo;
 
 /**
  * Core logic for applying item vertical and horizontal spacings via item

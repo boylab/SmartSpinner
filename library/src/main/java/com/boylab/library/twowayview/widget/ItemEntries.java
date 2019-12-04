@@ -19,13 +19,11 @@
  * limitations under the License.
  */
 
-package org.lucasr.twowayview.widget;
-
-import android.util.Log;
+package com.boylab.library.twowayview.widget;
 
 import java.util.Arrays;
 
-import org.lucasr.twowayview.widget.BaseLayoutManager.ItemEntry;
+import com.boylab.library.twowayview.widget.BaseLayoutManager.ItemEntry;
 
 class ItemEntries {
     private static final int MIN_SIZE = 10;

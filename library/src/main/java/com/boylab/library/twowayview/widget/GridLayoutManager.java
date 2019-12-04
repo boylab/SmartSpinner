@@ -14,18 +14,18 @@
  * limitations under the License.
  */
 
-package org.lucasr.twowayview.widget;
+package com.boylab.library.twowayview.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import androidx.recyclerview.widget.RecyclerView.Recycler;
+import androidx.recyclerview.widget.RecyclerView.State;
 import android.util.AttributeSet;
 import android.view.View;
 
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.boylab.library.R;
 
-import org.lucasr.twowayview.widget.Lanes.LaneInfo;
+import com.boylab.library.twowayview.widget.Lanes.LaneInfo;
 
 public class GridLayoutManager extends BaseLayoutManager {
     private static final String LOGTAG = "GridLayoutManager";
@@ -85,7 +85,7 @@ public class GridLayoutManager extends BaseLayoutManager {
     }
 
     @Override
-    void moveLayoutToPosition(int position, int offset, RecyclerView.Recycler recycler, RecyclerView.State state) {
+    void moveLayoutToPosition(int position, int offset, Recycler recycler, State state) {
         final Lanes lanes = getLanes();
         lanes.reset(offset);
 
@@ -133,6 +133,22 @@ public class GridLayoutManager extends BaseLayoutManager {
         mNumRows = numRows;
         if (!isVertical()) {
             requestLayout();
+        }
+    }
+
+    @Override
+    public void onMeasure(Recycler recycler, State state, int widthSpec, int heightSpec) {
+
+        View view = recycler.getViewForPosition(0);
+
+        int childCount = getChildCount();
+        if (childCount > 0) {
+            int myNumRows  = (childCount % mNumColumns == 0)?childCount / mNumColumns :childCount / mNumColumns + 1;
+            View firstChildView = recycler.getViewForPosition(0);
+            measureChild(firstChildView, widthSpec, heightSpec);
+            setMeasuredDimension(View.MeasureSpec.getSize(widthSpec)* mNumColumns, firstChildView.getMeasuredHeight() * myNumRows);
+        } else {
+            super.onMeasure(recycler, state, widthSpec, heightSpec);
         }
     }
 }

@@ -1,44 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <declare-styleable name="twowayview_TwoWayLayoutManager">
-        <attr name="android:orientation" tools:ignore="ResourceName"/>
-    </declare-styleable>
-
-    <declare-styleable name="twowayview_TwoWayView">
-        <attr name="twowayview_layoutManager" format="string"/>
-    </declare-styleable>
-
-    <declare-styleable name="twowayview_GridLayoutManager">
-        <attr name="twowayview_numColumns" format="integer"/>
-        <attr name="twowayview_numRows" format="integer"/>
-    </declare-styleable>
-
-    <declare-styleable name="twowayview_SpacingItemDecoration">
-        <attr name="android:verticalSpacing" tools:ignore="ResourceName"/>
-        <attr name="android:horizontalSpacing" tools:ignore="ResourceName"/>
-    </declare-styleable>
-
-    <declare-styleable name="twowayview_DividerItemDecoration">
-        <attr name="android:divider" tools:ignore="ResourceName"/>
-        <attr name="twowayview_verticalDivider" format="reference"/>
-        <attr name="twowayview_horizontalDivider" format="reference"/>
-    </declare-styleable>
-
-    <declare-styleable name="twowayview_StaggeredGridViewChild">
-        <attr name="twowayview_span" format="integer"/>
-    </declare-styleable>
-
-    <declare-styleable name="twowayview_SpannableGridViewChild">
-        <attr name="twowayview_colSpan" format="integer"/>
-        <attr name="twowayview_rowSpan" format="integer"/>
-    </declare-styleable>
-
     <attr name="SpinnerItemGravity" format="enum">
         <enum name="start" value="0" />
         <enum name="end" value="1" />
         <enum name="center" value="2" />
     </attr>
+
+    <declare-styleable name="twowayview_TwoWayView">
+        <attr name="twowayview_layoutManager" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="twowayview_GridLayoutManager">
+        <attr name="twowayview_numColumns" format="integer" />
+        <attr name="twowayview_numRows" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="twowayview_SpacingItemDecoration">
+        <attr name="android:verticalSpacing" tools:ignore="ResourceName" />
+        <attr name="android:horizontalSpacing" tools:ignore="ResourceName" />
+    </declare-styleable>
+
+    <declare-styleable name="twowayview_DividerItemDecoration">
+        <attr name="android:divider" tools:ignore="ResourceName" />
+        <attr name="twowayview_verticalDivider" format="reference" />
+        <attr name="twowayview_horizontalDivider" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="twowayview_StaggeredGridViewChild">
+        <attr name="twowayview_span" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="twowayview_SpannableGridViewChild">
+        <attr name="twowayview_colSpan" format="integer" />
+        <attr name="twowayview_rowSpan" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="twowayview_TwoWayLayoutManager">
+        <attr name="android:orientation" tools:ignore="ResourceName" />
+    </declare-styleable>
 
     <declare-styleable name="SmartSpinner">
         <!--spinner background、文字背景-->
@@ -50,15 +50,16 @@
         <attr name="arrowTint" format="color" />
         <attr name="arrowDrawable" format="reference|color" />
 
+        <attr name="isGridView" format="boolean" />
+        <attr name="numColumns" format="integer" />
+        <attr name="numRows" format="integer" />
+        <attr name="itemDrawable" format="reference|color" />
+        <attr name="itemGravity" />
+        <attr name="itemChecked" format="boolean" />
         <attr name="itemPaddingTop" format="dimension" />
         <attr name="itemPaddingLeft" format="dimension" />
         <attr name="itemPaddingBottom" format="dimension" />
         <attr name="itemPaddingRight" format="dimension" />
-        <attr name="itemDrawable" format="reference|color" />
-        <attr name="itemGravity" />
-        <attr name="itemChecked" format="boolean"/>
-        <attr name="itemMaxList" format="integer"/>
-
         <attr name="entries" format="reference" />
     </declare-styleable>
 </resources>

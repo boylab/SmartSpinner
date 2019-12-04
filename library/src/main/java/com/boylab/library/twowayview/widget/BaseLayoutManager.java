@@ -14,24 +14,25 @@
  * limitations under the License.
  */
 
-package org.lucasr.twowayview.widget;
+package com.boylab.library.twowayview.widget;
 
 import android.content.Context;
 import android.graphics.Rect;
 import android.os.Parcel;
 import android.os.Parcelable;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.LayoutParams;
+import androidx.recyclerview.widget.RecyclerView.Recycler;
+import androidx.recyclerview.widget.RecyclerView.State;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.MarginLayoutParams;
 
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
+import com.boylab.library.twowayview.TwoWayLayoutManager;
+import com.boylab.library.twowayview.widget.Lanes.LaneInfo;
 
-import org.lucasr.twowayview.TwoWayLayoutManager;
-import org.lucasr.twowayview.widget.Lanes.LaneInfo;
-
-import static org.lucasr.twowayview.widget.Lanes.calculateLaneSize;
+import static com.boylab.library.twowayview.widget.Lanes.calculateLaneSize;
 
 public abstract class BaseLayoutManager extends TwoWayLayoutManager {
     private static final String LOGTAG = "BaseLayoutManager";
@@ -331,7 +332,7 @@ public abstract class BaseLayoutManager extends TwoWayLayoutManager {
     }
 
     @Override
-    public void onLayoutChildren(RecyclerView.Recycler recycler, RecyclerView.State state) {
+    public void onLayoutChildren(Recycler recycler, State state) {
         final boolean restoringLanes = (mLanesToRestore != null);
         if (restoringLanes) {
             mLanes = mLanesToRestore;
@@ -368,7 +369,7 @@ public abstract class BaseLayoutManager extends TwoWayLayoutManager {
     }
 
     @Override
-    protected void onLayoutScrapList(RecyclerView.Recycler recycler, RecyclerView.State state) {
+    protected void onLayoutScrapList(Recycler recycler, State state) {
         mLanes.save();
         super.onLayoutScrapList(recycler, state);
         mLanes.restore();
@@ -484,7 +485,7 @@ public abstract class BaseLayoutManager extends TwoWayLayoutManager {
         layoutDecorated(child, mChildFrame.left, mChildFrame.top, mChildFrame.right,
                 mChildFrame.bottom);
 
-        final RecyclerView.LayoutParams lp = (RecyclerView.LayoutParams) child.getLayoutParams();
+        final LayoutParams lp = (LayoutParams) child.getLayoutParams();
         if (!lp.isItemRemoved()) {
             pushChildFrame(entry, mChildFrame, mTempLaneInfo.startLane,
                     getLaneSpanForChild(child), direction);
@@ -524,45 +525,45 @@ public abstract class BaseLayoutManager extends TwoWayLayoutManager {
     }
 
     @Override
-    public boolean checkLayoutParams(RecyclerView.LayoutParams lp) {
+    public boolean checkLayoutParams(LayoutParams lp) {
         if (isVertical()) {
-            return (lp.width == RecyclerView.LayoutParams.MATCH_PARENT);
+            return (lp.width == LayoutParams.MATCH_PARENT);
         } else {
-            return (lp.height == RecyclerView.LayoutParams.MATCH_PARENT);
+            return (lp.height == LayoutParams.MATCH_PARENT);
         }
     }
 
     @Override
-    public RecyclerView.LayoutParams generateDefaultLayoutParams() {
+    public LayoutParams generateDefaultLayoutParams() {
         if (isVertical()) {
-            return new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT);
+            return new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         } else {
-            return new RecyclerView.LayoutParams(RecyclerView.LayoutParams.WRAP_CONTENT, RecyclerView.LayoutParams.MATCH_PARENT);
+            return new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
         }
     }
 
     @Override
-    public RecyclerView.LayoutParams generateLayoutParams(ViewGroup.LayoutParams lp) {
-        final RecyclerView.LayoutParams lanedLp = new RecyclerView.LayoutParams((MarginLayoutParams) lp);
+    public LayoutParams generateLayoutParams(ViewGroup.LayoutParams lp) {
+        final LayoutParams lanedLp = new LayoutParams((MarginLayoutParams) lp);
         if (isVertical()) {
-            lanedLp.width = RecyclerView.LayoutParams.MATCH_PARENT;
+            lanedLp.width = LayoutParams.MATCH_PARENT;
             lanedLp.height = lp.height;
         } else {
             lanedLp.width = lp.width;
-            lanedLp.height = RecyclerView.LayoutParams.MATCH_PARENT;
+            lanedLp.height = LayoutParams.MATCH_PARENT;
         }
 
         return lanedLp;
     }
 
     @Override
-    public RecyclerView.LayoutParams generateLayoutParams(Context c, AttributeSet attrs) {
-        return new RecyclerView.LayoutParams(c, attrs);
+    public LayoutParams generateLayoutParams(Context c, AttributeSet attrs) {
+        return new LayoutParams(c, attrs);
     }
 
     abstract int getLaneCount();
     abstract void getLaneForPosition(LaneInfo outInfo, int position, Direction direction);
-    abstract void moveLayoutToPosition(int position, int offset, RecyclerView.Recycler recycler, RecyclerView.State state);
+    abstract void moveLayoutToPosition(int position, int offset, Recycler recycler, State state);
 
     protected static class LanedSavedState extends SavedState {
         private Orientation orientation;
