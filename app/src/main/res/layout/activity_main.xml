@@ -24,6 +24,8 @@
             android:background="@drawable/spinner_drawable"
             app:arrowDrawable="@drawable/smart_arrow_ds15"
             app:arrowTint="@android:color/darker_gray"
+            app:entries="@array/array_PhotoCamera"
+            app:numColumns="2"
             android:padding="15dp"/>
 
     </FrameLayout>

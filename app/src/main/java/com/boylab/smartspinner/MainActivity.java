@@ -78,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
                 mPopupWindow.setTouchable(true);
                 mPopupWindow.setFocusable(true);
                 mPopupWindow.setOutsideTouchable(true);
+
+                mPopupWindow.setWidth(800);
                 mPopupWindow.showAsDropDown(btn_Click);
                 Drawable drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.spinner_drawable);
 

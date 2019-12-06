@@ -139,9 +139,14 @@ public class GridLayoutManager extends BaseLayoutManager {
     @Override
     public void onMeasure(Recycler recycler, State state, int widthSpec, int heightSpec) {
 
-        View view = recycler.getViewForPosition(0);
+        double childCount = getChildCount();
 
-        int childCount = getChildCount();
+        int myRows = (int) Math.ceil(childCount/mNumColumns);
+
+        //View view = recycler.getViewForPosition(0);
+
+
+        /*int childCount = getChildCount();
         if (childCount > 0) {
             int myNumRows  = (childCount % mNumColumns == 0)?childCount / mNumColumns :childCount / mNumColumns + 1;
             View firstChildView = recycler.getViewForPosition(0);
@@ -149,6 +154,7 @@ public class GridLayoutManager extends BaseLayoutManager {
             setMeasuredDimension(View.MeasureSpec.getSize(widthSpec)* mNumColumns, firstChildView.getMeasuredHeight() * myNumRows);
         } else {
             super.onMeasure(recycler, state, widthSpec, heightSpec);
-        }
+        }*/
+        super.onMeasure(recycler, state, widthSpec, heightSpec);
     }
 }

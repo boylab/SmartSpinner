@@ -76,8 +76,7 @@ public class SmartSpinner extends AppCompatTextView {
     private int arrowTint;
     private @DrawableRes int arrowDrawableResId;
 
-    private boolean isGridView;
-    private int numColumns;
+    private int numColumns = 1;
     private int numRows;
     private @DrawableRes int itemDrawableResId;
     private SpinnerItemGravity itemGravity;
@@ -95,6 +94,8 @@ public class SmartSpinner extends AppCompatTextView {
     private AdapterView.OnItemClickListener onItemClickListener;
     private AdapterView.OnItemSelectedListener onItemSelectedListener;
     private OnSpinnerItemListener onSpinnerItemListener;
+
+    private int[] location = new int[4];
 
     private int displayHeight;
     private int parentVerticalOffset;
@@ -173,9 +174,8 @@ public class SmartSpinner extends AppCompatTextView {
         arrowTint = typedArray.getColor(R.styleable.SmartSpinner_arrowTint, getResources().getColor(android.R.color.black));
         arrowDrawableResId = typedArray.getResourceId(R.styleable.SmartSpinner_arrowDrawable, R.drawable.smart_arrow);
 
-        isGridView = typedArray.getBoolean(R.styleable.SmartSpinner_isGridView, false);
-        numColumns = typedArray.getInt(R.styleable.SmartSpinner_numColumns, 2);
-        numRows = typedArray.getInt(R.styleable.SmartSpinner_numRows, 2);
+        numColumns = typedArray.getInt(R.styleable.SmartSpinner_numColumns, 1);
+        numRows = typedArray.getInt(R.styleable.SmartSpinner_numRows, 1);
 
         itemPaddingTop = typedArray.getDimensionPixelSize(R.styleable.SmartSpinner_itemPaddingTop, 0);
         itemPaddingLeft = typedArray.getDimensionPixelSize(R.styleable.SmartSpinner_itemPaddingLeft, 0);
@@ -208,16 +208,19 @@ public class SmartSpinner extends AppCompatTextView {
         final Drawable divider = getResources().getDrawable(R.drawable.divider);
         twoWayView.addItemDecoration(new DividerItemDecoration(divider));
 
-        if (isGridView){
-            layoutManager = new GridLayoutManager(TwoWayLayoutManager.Orientation.VERTICAL, numColumns,numRows);
-        }else {
+        if (numColumns == 1){
             layoutManager = new ListLayoutManager(context, TwoWayLayoutManager.Orientation.VERTICAL);
+        }else {
+            layoutManager = new GridLayoutManager(TwoWayLayoutManager.Orientation.VERTICAL, numColumns,numRows);
         }
 
         twoWayView.setLayoutManager(layoutManager);
         popupWindow = new PopupWindow(context);
         popupWindow.setContentView(twoWayView);
         popupWindow.setTouchable(true);
+
+
+
 
         /*popupWindow.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -255,20 +258,56 @@ public class SmartSpinner extends AppCompatTextView {
             }
         });
 
+        measureLocation();
+
+
         measureDisplayHeight();
 
     }
 
     private void measureDisplayHeight() {
         displayHeight = getContext().getResources().getDisplayMetrics().heightPixels;
+
+
+        this.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
+        getParentVerticalOffset();
+
+        int measuredHeight = getMeasuredHeight();
+
+        int i = displayHeight - getParentVerticalOffset() - measuredHeight;
+
+
+
+
+
+
+
+
+
+
+        Log.i(">>>boylab>>", ">>>measureDisplayHeight: "+displayHeight);
+
+
+
     }
 
-    private int getParentVerticalOffset() {
-        if (parentVerticalOffset > 0) {
-            return parentVerticalOffset;
-        }
+    public void measureLocation(){
         int[] locationOnScreen = new int[2];
         getLocationOnScreen(locationOnScreen);
+        location[0] = locationOnScreen[0];
+        location[1] = locationOnScreen[1];
+
+        int w = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+        int h = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+        measure(w, h);
+
+        location[2] = getMeasuredWidth();
+        location[3] = getMeasuredHeight();
+    }
+
+
+    private int getParentVerticalOffset() {
+
         return parentVerticalOffset = locationOnScreen[VERTICAL_OFFSET];
     }
 
@@ -502,7 +541,7 @@ public class SmartSpinner extends AppCompatTextView {
         if (!isArrowHidden) {
             animateArrow(true);
         }
-        popupWindow.showAsDropDown(getRootView(),0,0);
+        popupWindow.showAsDropDown(this,0,0);
         final TwoWayView wayView = (TwoWayView) popupWindow.getContentView();
         if(wayView != null) {
             wayView.setVerticalScrollBarEnabled(false);

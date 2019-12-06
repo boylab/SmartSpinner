@@ -42,7 +42,7 @@ public abstract class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.S
 
         public SimpleViewHolder(View view) {
             super(view);
-            title = view.findViewById(R.id.title);
+            title = view.findViewById(R.id.text_view_spinner);
         }
     }
 
@@ -63,6 +63,7 @@ public abstract class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.S
     public void onBindViewHolder(SimpleViewHolder holder, int position) {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            // TODO: 2019/12/5 图片设置失败
             holder.title.setBackground(ContextCompat.getDrawable(mContext, backgroundSelector));
         }
         holder.title.setText(getItemText(position));

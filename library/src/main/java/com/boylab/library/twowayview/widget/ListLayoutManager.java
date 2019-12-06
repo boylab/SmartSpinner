@@ -46,7 +46,7 @@ public class ListLayoutManager extends BaseLayoutManager {
 
     @Override
     void getLaneForPosition(LaneInfo outInfo, int position, Direction direction) {
-        outInfo.set(0, 0);
+        outInfo.set(0, 0); 
     }
 
     @Override
@@ -54,53 +54,4 @@ public class ListLayoutManager extends BaseLayoutManager {
         getLanes().reset(offset);
     }
 
-    @Override
-    public void onMeasure(Recycler recycler, State state, int widthSpec, int heightSpec) {
-        int count = state.getItemCount();
-        if (count > 0) {
-            if(count>4){
-                count =4;
-            }
-            int realHeight = 0;
-            int realWidth = 0;
-            for(int i = 0;i < count; i++){
-                View view = recycler.getViewForPosition(0);
-                if (view != null) {
-                    measureChild(view, widthSpec, heightSpec);
-                    int measuredWidth = View.MeasureSpec.getSize(widthSpec);
-                    int measuredHeight = view.getMeasuredHeight();
-                    realWidth = realWidth > measuredWidth ? realWidth : measuredWidth;
-                    realHeight += measuredHeight;
-                }
-                setMeasuredDimension(realWidth, realHeight);
-            }
-        } else {
-            super.onMeasure(recycler, state, widthSpec, heightSpec);
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-        /*int childCount = getChildCount();
-        if (childCount > 0) {
-            View view = recycler.getViewForPosition(0);
-            measureChild(view, widthSpec, heightSpec);
-            //int measuredWidth = View.MeasureSpec.getSize(widthSpec);
-            int measuredHeight = view.getMeasuredHeight();
-            int showHeight = measuredHeight * state.getItemCount();
-            if(state.getItemCount() >= 5){
-                showHeight = measuredHeight * 5;
-            }
-            setMeasuredDimension(widthSpec, showHeight);
-        }*/
-    }
 }
