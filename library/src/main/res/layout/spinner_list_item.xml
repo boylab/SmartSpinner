@@ -8,6 +8,6 @@
     android:gravity="center"
     android:padding="@dimen/one_and_a_half_grid_unit"
     android:singleLine="true"
-    android:textSize="15sp"
+    android:textSize="20sp"
     tools:text="Item"
     tools:textColor="@android:color/black" />

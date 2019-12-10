@@ -42,7 +42,7 @@
 
     <declare-styleable name="SmartSpinner">
         <!--spinner background、文字背景-->
-        <attr name="backgroundSelector" format="integer" />
+        <attr name="textDrawableRes" format="integer" />
         <attr name="textTint" format="color" />
 
         <!--arrow ishide、tint、drawable-->
@@ -53,6 +53,8 @@
         <attr name="numColumns" format="integer" />
         <attr name="numRows" format="integer" />
         <attr name="itemDrawable" format="reference|color" />
+        <attr name="itemWith" format="dimension" />
+        <attr name="itemHeight" format="dimension" />
         <attr name="itemGravity" />
         <attr name="itemChecked" format="boolean" />
         <attr name="itemPaddingTop" format="dimension" />

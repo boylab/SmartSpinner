@@ -18,15 +18,17 @@
             android:id="@+id/smart_Spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:background="@drawable/spinner_drawable"
+            android:background="@drawable/ic_text_selector"
+            android:textSize="20sp"
             app:arrowDrawable="@drawable/smart_arrow_ds15"
             app:arrowTint="@android:color/darker_gray"
             app:entries="@array/array_PhotoCamera"
-            app:numColumns="2"
-            android:padding="15dp"/>
+            app:itemHeight="50dp"
+            app:itemWith="160dp"
+            app:numColumns="2" />
 
     </FrameLayout>
 
@@ -34,17 +36,17 @@
         android:id="@+id/framelaout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
         android:layout_below="@+id/framelaout1"
+        android:background="@color/colorAccent"
         android:padding="20dp">
 
         <Button
             android:id="@+id/click"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="点击"
             android:layout_gravity="center"
-            android:layout_marginRight="50dp"/>
+            android:layout_marginRight="50dp"
+            android:text="点击" />
 
     </FrameLayout>
 

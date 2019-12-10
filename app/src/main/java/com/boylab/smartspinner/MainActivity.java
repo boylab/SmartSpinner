@@ -39,12 +39,12 @@ public class MainActivity extends AppCompatActivity {
 
         smartSpinner = findViewById(R.id.smart_Spinner);
         List<String> dataset = new LinkedList<>(Arrays.asList("One", "Two", "Three", "Four", "Five"));
-        Log.i(">>>boylab>>", ">>>onCreate: "+dataset.size());
+        Log.i(">>>boylab>>", ">>>onCreate: " + dataset.size());
         smartSpinner.attachDataSource(dataset);
 
 
         final Button btn_Click = findViewById(R.id.click);
-        btn_Click .setOnClickListener(new View.OnClickListener() {
+        btn_Click.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
                 int height = twoWayView.getLayoutManager().getHeight();
                 int width = twoWayView.getLayoutManager().getWidth();
-                Log.i(">>>boylab>>", ">>>onClick: height ="+height+" >>>>> width ="+width);
+                Log.i(">>>boylab>>", ">>>onClick: height =" + height + " >>>>> width =" + width);
 
                 mPopupWindow.setHeight(500);
                 mPopupWindow.setWidth(500);
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
                 height = twoWayView.getHeight();
                 width = twoWayView.getWidth();
-                Log.i(">>>boylab>>", ">>>onClick: height ="+height+" >>>>> width ="+width);
+                Log.i(">>>boylab>>", ">>>onClick: height =" + height + " >>>>> width =" + width);
             }
         });
 

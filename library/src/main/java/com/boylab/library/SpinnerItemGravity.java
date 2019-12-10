@@ -1,14 +1,26 @@
 package com.boylab.library;
 
+import android.view.Gravity;
+
 enum SpinnerItemGravity {
-    START(0),
-    END(1),
-    CENTER(2);
+    START(0, Gravity.LEFT),
+    END(1, Gravity.END),
+    CENTER(2, Gravity.CENTER_HORIZONTAL);
 
     private final int id;
+    private int gravity;
 
-    SpinnerItemGravity(int id) {
+    SpinnerItemGravity(int id, int gravity) {
         this.id = id;
+        this.gravity = gravity;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getGravity() {
+        return gravity;
     }
 
     static SpinnerItemGravity fromId(int id) {
