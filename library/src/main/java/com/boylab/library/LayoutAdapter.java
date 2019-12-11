@@ -18,7 +18,6 @@ package com.boylab.library;
 
 import android.content.Context;
 import android.os.Build;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,41 +31,49 @@ public abstract class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.S
 
     private Context mContext;
 
-    private int itemWith;
+    private int itemWidth;
     private int itemHeight;
+    private int textColor;
+    private int itemDrawableRes;
+    private final SpinnerItemGravity itemGravity;
 
     private int itemPaddingTop, itemPaddingLeft, itemPaddingBottom, itemPaddingRight;
 
-    itemDrawableResId = typedArray.getResourceId(R.styleable.SmartSpinner_itemDrawable, R.drawable.smart_arrow);
-    itemGravity = SpinnerItemGravity.fromId(typedArray.getInt(R.styleable.SmartSpinner_itemGravity, SpinnerItemGravity.CENTER.ordinal()));
-    itemChecked = typedArray.getBoolean(R.styleable.SmartSpinner_itemChecked, false);
 
+    private boolean itemChecked;
 
-
-    private final SpinnerItemGravity itemGravity;
-    private int textColor;
-    private int itemDrawableResId;
-
-    int selectedIndex;
+    private int selectedIndex;
     private static AdapterView.OnItemSelectedListener onItemSelectedListener;
 
-    private final int[] textGravity = new int[]{Gravity.START, Gravity.END,Gravity.CENTER_HORIZONTAL};
-
     public static class SimpleViewHolder extends RecyclerView.ViewHolder {
-        public final TextView title;
+        public final TextView itemText;
 
         public SimpleViewHolder(final View view) {
             super(view);
-            title = view.findViewById(R.id.text_view_spinner);
+            itemText = view.findViewById(R.id.text_view_spinner);
         }
     }
 
-    public LayoutAdapter(Context context, int textColor, int itemDrawableResId, SpinnerItemGravity itemGravity) {
+    public LayoutAdapter(Context mContext, int itemWidth, int itemHeight, int textColor, int itemDrawableRes, SpinnerItemGravity itemGravity,
+                         int itemPaddingLeft, int itemPaddingTop, int itemPaddingRight, int itemPaddingBottom) {
+        this.mContext = mContext;
+        this.itemWidth = itemWidth;
+        this.itemHeight = itemHeight;
+        this.textColor = textColor;
+        this.itemDrawableRes = itemDrawableRes;
+        this.itemGravity = itemGravity;
+        this.itemPaddingTop = itemPaddingTop;
+        this.itemPaddingLeft = itemPaddingLeft;
+        this.itemPaddingBottom = itemPaddingBottom;
+        this.itemPaddingRight = itemPaddingRight;
+    }
+
+    /*public LayoutAdapter(Context context, int textColor, int itemDrawableRes, SpinnerItemGravity itemGravity) {
         this.mContext = context;
-        this.itemDrawableResId = itemDrawableResId;
+        this.itemDrawableRes = itemDrawableRes;
         this.textColor = textColor;
         this.itemGravity = itemGravity;
-    }
+    }*/
 
     @Override
     public SimpleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -78,32 +85,39 @@ public abstract class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.S
     @Override
     public void onBindViewHolder(final SimpleViewHolder holder, final int position) {
 
+        holder.itemText.setWidth(itemWidth);
+        holder.itemText.setHeight(itemHeight);
+        holder.itemText.setTextColor(textColor);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            // TODO: 2019/12/5 图片设置失败
-            holder.title.setBackground(ContextCompat.getDrawable(mContext, itemDrawableResId));
+            holder.itemText.setBackground(ContextCompat.getDrawable(mContext, itemDrawableRes));
         }
-        holder.title.setText(getItemText(position));
-        holder.title.setTextColor(textColor);
-        holder.title.setGravity(itemGravity.getGravity());
+        holder.itemText.setGravity(itemGravity.getGravity());
+        holder.itemText.setPadding(itemPaddingLeft, itemPaddingTop, itemPaddingRight, itemPaddingBottom);
 
-        holder.title.setOnClickListener(new View.OnClickListener() {
+        holder.itemText.setText(getItemText(position));
+        holder.itemText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                setSelectedIndex(position);
                 if (onItemSelectedListener != null){
-                    onItemSelectedListener.onItemSelected(null, holder.title, position, v.getId());
+                    onItemSelectedListener.onItemSelected(null, holder.itemText, position, v.getId());
                 }
             }
         });
 
     }
 
-    public abstract String getItemText(int position);
+    protected abstract String getItemText(int position);
 
-    public void setSelectedIndex(int index){
+    protected void setSelectedIndex(int index){
         selectedIndex = index;
     }
 
-    public abstract String getItemInDataset(int position);
+    public int getSelectedIndex() {
+        return selectedIndex;
+    }
+
+    protected abstract String getItemInDataset(int position);
 
     public void setOnItemSelectedListener(AdapterView.OnItemSelectedListener onItemSelectedListener) {
         this.onItemSelectedListener = onItemSelectedListener;

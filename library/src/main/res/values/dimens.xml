@@ -2,4 +2,7 @@
 <resources>
     <dimen name="three_grid_unit">24dp</dimen>
     <dimen name="one_and_a_half_grid_unit">12dp</dimen>
+
+    <dimen name="text_bg_radiu">5dp</dimen>
+    <dimen name="spinner_divider">6dp</dimen>
 </resources>

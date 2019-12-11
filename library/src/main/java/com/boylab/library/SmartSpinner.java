@@ -66,18 +66,43 @@ public class SmartSpinner extends AppCompatTextView {
     private static final String IS_ARROW_HIDDEN = "is_arrow_hidden";
     private static final String ARROW_DRAWABLE_RES_ID = "arrow_drawable_res_id";
 
-    private int textDrawableRes;
+     /*<attr name="textDrawable" format="reference|color" />
+        <attr name="textTint" format="color" />
+
+        <!--arrow ishide、tint、drawable-->
+        <attr name="arrowHide" format="boolean" />
+        <attr name="arrowTint" format="color" />
+        <attr name="arrowDrawable" format="reference|color" />
+
+        <attr name="numColumns" format="integer" />
+        <attr name="numRows" format="integer" />
+        <attr name="itemWidth" format="dimension" />
+        <attr name="itemHeight" format="dimension" />
+        <attr name="itemDrawable" format="reference|color" />
+        <attr name="itemGravity" />
+        <attr name="itemChecked" format="boolean" />
+        <attr name="itemPaddingTop" format="dimension" />
+        <attr name="itemPaddingLeft" format="dimension" />
+        <attr name="itemPaddingBottom" format="dimension" />
+        <attr name="itemPaddingRight" format="dimension" />
+        <attr name="entries" format="reference" />*/
+
+
+    private @DrawableRes
+    int textDrawableRes;
     private int textTint;
 
     private boolean isArrowHidden;
     private int arrowTint;
-    private @DrawableRes int arrowDrawableRes;
+    private @DrawableRes
+    int arrowDrawableRes;
 
     private int numColumns = 1, numRows;
-    private int itemWith = 100,itemHeight = 50, spacing = 0;
-    private @DrawableRes int itemDrawableResId;
+    private int itemWidth = 100, itemHeight = 50, spacing = 6, defaultPadding = 12;
+    private @DrawableRes
+    int itemDrawableResId;
     private SpinnerItemGravity itemGravity;
-    private boolean itemChecked ;
+    private boolean itemChecked;
     private int itemPaddingTop, itemPaddingLeft, itemPaddingBottom, itemPaddingRight;
     private List<CharSequence> charSequences;
 
@@ -85,9 +110,9 @@ public class SmartSpinner extends AppCompatTextView {
     private Drawable arrowDrawable;
     private PopupWindow popupWindow;
     private ViewGroup rootView;
-    private TwoWayView twoWayView ;
+    private TwoWayView twoWayView;
     private TwoWayLayoutManager layoutManager;
-    private LayoutAdapter adapter;
+    public LayoutAdapter adapter;
 
     private AdapterView.OnItemSelectedListener onItemSelectedListener;
     private OnSpinnerItemListener onSpinnerItemListener;
@@ -156,7 +181,7 @@ public class SmartSpinner extends AppCompatTextView {
         super.onRestoreInstanceState(savedState);
     }
 
-    private void parseRes(Context context, AttributeSet attrs){
+    private void parseRes(Context context, AttributeSet attrs) {
         Resources resources = getResources();
         int defaultPadding = resources.getDimensionPixelSize(R.dimen.one_and_a_half_grid_unit);
         setGravity(Gravity.CENTER_VERTICAL | Gravity.START);
@@ -164,7 +189,7 @@ public class SmartSpinner extends AppCompatTextView {
         setClickable(true);
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SmartSpinner);
-        textDrawableRes = typedArray.getResourceId(R.styleable.SmartSpinner_textDrawableRes, R.drawable.ic_text_selector);
+        textDrawableRes = typedArray.getResourceId(R.styleable.SmartSpinner_textDrawable, R.drawable.ic_text_selector);
         textTint = typedArray.getColor(R.styleable.SmartSpinner_textTint, getDefaultTextColor(context));
 
         isArrowHidden = typedArray.getBoolean(R.styleable.SmartSpinner_arrowHide, false);
@@ -173,7 +198,7 @@ public class SmartSpinner extends AppCompatTextView {
 
         numColumns = typedArray.getInt(R.styleable.SmartSpinner_numColumns, 1);
         numRows = typedArray.getInt(R.styleable.SmartSpinner_numRows, 1);
-        itemWith = typedArray.getDimensionPixelSize(R.styleable.SmartSpinner_itemWith, 100);
+        itemWidth = typedArray.getDimensionPixelSize(R.styleable.SmartSpinner_itemWidth, 100);
         itemHeight = typedArray.getDimensionPixelSize(R.styleable.SmartSpinner_itemHeight, 50);
 
         itemPaddingTop = typedArray.getDimensionPixelSize(R.styleable.SmartSpinner_itemPaddingTop, 0);
@@ -189,6 +214,8 @@ public class SmartSpinner extends AppCompatTextView {
         CharSequence[] entries = typedArray.getTextArray(R.styleable.SmartSpinner_entries);
         charSequences = ((entries == null) ? new ArrayList<CharSequence>() : Arrays.asList(entries));
 
+        defaultPadding = resources.getDimensionPixelSize(R.dimen.one_and_a_half_grid_unit);
+
         typedArray.recycle();
     }
 
@@ -197,7 +224,7 @@ public class SmartSpinner extends AppCompatTextView {
         setBackgroundResource(textDrawableRes);
         setTextColor(textTint);
         setMaxLines(1);
-        setWidth(itemWith);
+        setWidth(itemWidth);
         setHeight(itemHeight);
 
         initArrowDrawable(arrowDrawableRes);
@@ -208,16 +235,16 @@ public class SmartSpinner extends AppCompatTextView {
         twoWayView.setHasFixedSize(true);
         twoWayView.setLongClickable(true);
 
-        final Drawable divider = getResources().getDrawable(R.drawable.divider);
-        int dividerWidth =  divider.getIntrinsicWidth();
-        int dividerHeight =  divider.getIntrinsicHeight();
+        final Drawable divider = getResources().getDrawable(R.drawable.spinner_divider);
+        int dividerWidth = divider.getIntrinsicWidth();
+        int dividerHeight = divider.getIntrinsicHeight();
 
 
         twoWayView.addItemDecoration(new DividerItemDecoration(divider));
-        if (numColumns == 1){
+        if (numColumns == 1) {
             layoutManager = new ListLayoutManager(context, TwoWayLayoutManager.Orientation.VERTICAL);
-        }else {
-            layoutManager = new GridLayoutManager(TwoWayLayoutManager.Orientation.VERTICAL, numColumns,numRows);
+        } else {
+            layoutManager = new GridLayoutManager(TwoWayLayoutManager.Orientation.VERTICAL, numColumns, numRows);
         }
         twoWayView.setLayoutManager(layoutManager);
 
@@ -241,21 +268,21 @@ public class SmartSpinner extends AppCompatTextView {
 
     }
 
-    public void freshPopupWindow(double childSize){
-        if (childSize == 0){
+    public void freshPopupWindow(double childSize) {
+        if (childSize == 0) {
             childSize = this.charSequences.size();
         }
-        numRows = (int) Math.ceil(childSize/numColumns);
+        numRows = (int) Math.ceil(childSize / numColumns);
 
-        float popupWith = numColumns*(itemWith + spacing)+spacing;
-        float popupHeight = numRows*(itemHeight + spacing)+spacing;
+        int popupWidth = numColumns * (itemWidth + spacing) - spacing + defaultPadding * 2;
+        int popupHeight = numRows * (itemHeight + spacing) - spacing + defaultPadding * 2;
 
-        popupWindow.setWidth((int) popupWith);
-        popupWindow.setHeight((int) popupHeight);
+        popupWindow.setWidth(popupWidth);
+        popupWindow.setHeight(popupHeight);
 
     }
 
-    public void measureDisplayLocation(){
+    public void measureDisplayLocation() {
         int[] locationOnScreen = new int[2];
         this.getLocationOnScreen(locationOnScreen);
         location[0] = locationOnScreen[0];
@@ -394,10 +421,12 @@ public class SmartSpinner extends AppCompatTextView {
         //attachDataSource(list);
 
     }
+
     public <T> void attachDataSource(@NonNull List<String> list) {
         freshPopupWindow(list.size());
 
-        adapter = new SmartSpinnerAdapter(getContext(), list, textTint, textDrawableRes, itemGravity);
+        adapter = new SmartSpinnerAdapter(getContext(), list, itemWidth, itemHeight, textTint, textDrawableRes, itemGravity,
+                itemPaddingLeft, itemPaddingTop, itemPaddingRight, itemPaddingBottom);
 
         adapter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -439,7 +468,7 @@ public class SmartSpinner extends AppCompatTextView {
 
             // TODO: 2019/12/9 监听
             //adapter.
-            
+
         }
     }
 
@@ -474,9 +503,9 @@ public class SmartSpinner extends AppCompatTextView {
         if (!isArrowHidden) {
             animateArrow(true);
         }
-        popupWindow.showAsDropDown(this,0,0);
+        popupWindow.showAsDropDown(this, 0, 0);
         final RelativeLayout wayView = (RelativeLayout) popupWindow.getContentView();
-        if(wayView != null) {
+        if (wayView != null) {
             wayView.setVerticalScrollBarEnabled(false);
             wayView.setHorizontalScrollBarEnabled(false);
             wayView.setVerticalFadingEdgeEnabled(false);
@@ -539,13 +568,14 @@ public class SmartSpinner extends AppCompatTextView {
     }
 
 
-    public void performItemClick( int position,boolean showDropdown) {
-        if(showDropdown) showDropDown();
+    public void performItemClick(int position, boolean showDropdown) {
+        if (showDropdown) showDropDown();
         setSelectedIndex(position);
     }
 
     /**
      * only applicable when popup is shown .
+     *
      * @param view
      * @param position
      * @param id
@@ -553,7 +583,7 @@ public class SmartSpinner extends AppCompatTextView {
     public void performItemClick(View view, int position, int id) {
         showDropDown();
         final TwoWayView listView = (TwoWayView) popupWindow.getContentView();
-        if(listView != null) {
+        if (listView != null) {
             //listView.performItemClick(view, position, id);
         }
     }

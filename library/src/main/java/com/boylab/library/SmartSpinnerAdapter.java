@@ -39,8 +39,9 @@ public class SmartSpinnerAdapter extends LayoutAdapter {
         }
     }
 
-    public SmartSpinnerAdapter(Context context, List<String> items, int textColor, int backgroundSelector,SpinnerItemGravity horizontalAlignment) {
-        super(context, textColor, backgroundSelector, horizontalAlignment);
+    public SmartSpinnerAdapter(Context mContext, List<String> items, int itemWidth, int itemHeight, int textColor, int itemDrawableRes,
+                               SpinnerItemGravity itemGravity, int itemPaddingLeft, int itemPaddingTop, int itemPaddingRight, int itemPaddingBottom) {
+        super(mContext, itemWidth, itemHeight,textColor, itemDrawableRes, itemGravity, itemPaddingLeft, itemPaddingTop, itemPaddingRight, itemPaddingBottom);
         this.items = items;
     }
 

@@ -3,9 +3,9 @@ package com.boylab.library;
 import android.view.Gravity;
 
 enum SpinnerItemGravity {
-    START(0, Gravity.LEFT),
-    END(1, Gravity.END),
-    CENTER(2, Gravity.CENTER_HORIZONTAL);
+    START(0, Gravity.LEFT | Gravity.CENTER_VERTICAL),
+    END(1, Gravity.END | Gravity.CENTER_VERTICAL),
+    CENTER(2, Gravity.CENTER);
 
     private final int id;
     private int gravity;
