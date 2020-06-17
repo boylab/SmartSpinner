@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="user">
+        <item name="u_account">账号管理</item>
+        <item name="u_sub_account">子账号管理</item>
+        <item name="u_equipment">设备管理</item>
+        <item name="u_page_settings">页面设置</item>
+        <item name="u_sys_settings">系统设置</item>
+        <item name="u_about">关于</item>
+        <item name="u_help">帮助</item>
+        <item name="u_exit">退出系统</item>
+    </string-array>
+
+    <string-array name="array_BaseEdition">
+        <item>基础摄像头</item>
+        <item>普通摄像头</item>
+        <item>专业摄像头</item>
+        <item>旗舰摄像头</item>
+    </string-array>
+
+
+    <!--<string-array name="array_CameraNum">-->
+        <!--<item>0 个摄像头</item>-->
+        <!--<item>1 个摄像头</item>-->
+        <!--<item>2 个摄像头</item>-->
+        <!--<item>3 个摄像头</item>-->
+        <!--<item>4 个摄像头</item>-->
+        <!--<item>5 个摄像头</item>-->
+        <!--<item>6 个摄像头</item>-->
+        <!--<item>7 个摄像头</item>-->
+        <!--<item>8 个摄像头</item>-->
+    <!--</string-array>-->
+
+    <string-array name="array_DeviceCamera">
+        <item>0 个</item>
+        <item>1 个</item>
+        <item>2 个</item>
+    </string-array>
+
+    <string-array name="array_ExtendCamera">
+        <item>0 个</item>
+        <item>1 个</item>
+        <item>2 个</item>
+        <item>3 个</item>
+        <item>4 个</item>
+        <item>5 个</item>
+        <item>6 个</item>
+        <item>7 个</item>
+        <item>8 个</item>
+    </string-array>
+
+    <string-array name="array_HDCamera">
+        <item>0 个</item>
+        <item>1 个</item>
+        <item>2 个</item>
+        <item>3 个</item>
+        <item>4 个</item>
+    </string-array>
+
+    <string-array name="array_ExtendMessage">
+        <item>0 个</item>
+        <item>1 个</item>
+        <item>2 个</item>
+        <item>3 个</item>
+        <item>4 个</item>
+    </string-array>
+
+    <string-array name="array_VideoCamera">
+        <item>0 个</item>
+        <item>1 个</item>
+        <item>2 个</item>
+        <item>3 个</item>
+        <item>4 个</item>
+    </string-array>
+
+    <string-array name="array_ApiCamera">
+        <item>0 个</item>
+        <item>1 个</item>
+        <item>2 个</item>
+        <item>3 个</item>
+        <item>4 个</item>
+        <item>5 个</item>
+        <item>6 个</item>
+        <item>7 个</item>
+    </string-array>
+
+    <!--普通大屏幕、点阵大屏幕-->
+    <string-array name="array_Screen">
+        <item>0 个</item>
+        <item>1 个</item>
+        <item>2 个</item>
+        <item>3 个</item>
+    </string-array>
+
+    <!--配件、串口-->
+    <string-array name="array_Computer">
+        <item>不使用电脑</item>
+        <item>电脑丶连续发送方式(毛重)</item>
+        <item>电脑丶指令应答方式</item>
+        <item>电脑丶老D2+连续通讯格式(净重)</item>
+        <item>电脑丶新D2+连续通讯格式(净重)</item>
+        <item>电脑丶老D2+连续通讯格式(毛重)</item>
+        <item>电脑丶新D2+连续通讯格式(毛重)</item>
+        <item>电脑丶特殊连续通讯格式1</item>
+        <item>电脑丶特殊连续通讯格式2</item>
+    </string-array>
+
+    <!--读卡器配件-->
+    <string-array name="array_CardReader">
+        <item>不使用读卡器</item>
+        <item>使用近距离读卡器</item>
+        <item>使用中、远距离读卡器</item>
+    </string-array>
+
+    <!--拍照摄像头配件-->
+    <string-array name="array_PhotoCamera">
+        <item>0 个</item>
+        <item>1 个</item>
+        <item>2 个</item>
+        <item>3 个</item>
+        <item>4 个</item>
+        <item>5 个</item>
+        <item>6 个</item>
+        <item>7 个</item>
+        <item>8 个</item>
+    </string-array>
+
+    <string-array name="array_Modbus">
+        <item>0 个</item>
+        <item>1 个</item>
+    </string-array>
+
+    <string-array name="array_ExtendBox">
+        <item>0 个</item>
+        <item>1 个</item>
+        <item>2 个</item>
+        <item>3 个</item>
+        <item>4 个</item>
+        <item>5 个</item>
+    </string-array>
+
+    <!--拍照识别摄像头个数、视频识别摄像头-->
+    <string-array name="array_LprCamera">
+        <item>0 个</item>
+        <item>1 个</item>
+        <item>2 个</item>
+        <item>3 个</item>
+        <item>4 个</item>
+    </string-array>
+
+    <!--主串口外设切换-->
+    <string-array name="array_MainPortParts">
+        <item>电脑通讯</item>
+        <item>近距离读卡器</item>
+        <item>拍照摄像头</item>
+        <item>摄像扩展盒</item>
+        <item>中远距离读卡器</item>
+        <item>拍照车号识别</item>
+        <item>点阵大屏幕</item>
+        <item>视频车号识别</item>
+    </string-array>
+
+    <!--副串口外设切换-->
+    <string-array name="array_AssistPortParts">
+        <item>电脑通讯</item>
+        <item>近距离读卡器</item>
+        <item>摄像扩展盒</item>
+        <item>中远距离读卡器</item>
+        <!--<item>拍照车号识别</item>-->
+        <item>点阵大屏幕</item>
+        <!--<item>视频车号识别</item>-->
+    </string-array>
+
+    <!--扩展串口外设切换-->
+    <string-array name="array_ExtendPortParts">
+        <item>电脑通讯</item>
+        <item>点阵大屏幕</item>
+    </string-array>
+
+    <!--USB串口、以太网端口-->
+    <string-array name="array_UsbPortParts">
+        <item>电脑通讯</item>
+    </string-array>
+
+    <string-array name="array_Computer_Parts">
+        <item>连续发送(毛重)</item>
+        <item>指令应答方式</item>
+        <item>老D2+(净重)</item>
+        <item>新D2+(净重)</item>
+        <item>老D2+(毛重)</item>
+        <item>新D2+(毛重)</item>
+        <item>特殊格式1</item>
+        <item>特殊格式2</item>
+        <item>MODBUS</item>
+    </string-array>
+
+    <!--电脑通讯波特率-->
+    <string-array name="array_Computer_Baud">
+        <item>600</item>
+        <item>1200</item>
+        <item>2400</item>
+        <item>4800</item>
+        <item>9600</item>
+        <item>19200</item>
+        <item>38400</item>
+        <item>57600</item>
+        <item>115200</item>
+    </string-array>
+
+    <!--校验方式-->
+    <string-array name="array_Computer_Chk">
+        <item>无校验2位停止</item>
+        <item>奇校验1位停止</item>
+        <item>偶校验1位停止</item>
+    </string-array>
+
+    <string-array name="array_NetPort_ComFormat">
+        <item>Modbus TCP</item>
+        <item>主动发送</item>
+    </string-array>
+
+    <string-array name="array_ExpandNet_NetMode">
+        <item>有线网络</item>
+        <item>无线网络</item>
+    </string-array>
+
+    <string-array name="array_ExpandNet_Encrypt">
+        <item>none</item>
+        <item>wep_open</item>
+        <item>wep</item>
+        <item>wpa_thip</item>
+        <item>wpa_aes</item>
+        <item>wpa2_thip</item>
+        <item>wpa2_aes</item>
+        <item>wpawpa2_thip</item>
+        <item>wpawpa2_aes</item>
+        <item>auto</item>
+    </string-array>
+
+    <string-array name="array_MainPort_Box">
+        <item>扩展盒 X 1</item>
+        <item>扩展盒 X 2</item>
+        <item>扩展盒 X 3</item>
+        <item>扩展盒 X 4</item>
+    </string-array>
+
+    <string-array name="array_AssistPort_Box">
+        <item>扩展盒 X 1</item>
+    </string-array>
+
+    <!--扩展盒外设切换-->
+    <string-array name="array_BoxPort">
+        <item>未使用</item>
+        <item>拍照</item>
+        <item>抓拍识别</item>
+        <item>视频识别</item>
+    </string-array>
+
+    <string-array name="array_AdDuration">
+        <item>3 秒</item>
+        <item>4 秒</item>
+        <item>5 秒</item>
+        <item>6 秒</item>
+        <item>7 秒</item>
+        <item>8 秒</item>
+        <item>9 秒</item>
+        <item>10 秒</item>
+    </string-array>
+
+    <string-array name="array_Para_SecurityLimit">
+        <item>无需随机码</item>
+        <item>需要随机码</item>
+    </string-array>
+
+    <string-array name="array_Para_ElockAlarm">
+        <item>使用仪表配置</item>
+        <item>固定不报警</item>
+        <item>固定低频报警</item>
+        <item>固定高频报警</item>
+        <item>固定一直报警</item>
+    </string-array>
+
+    <string-array name="array_Para_ElockClearMode">
+        <item>允许随机码清除</item>
+        <item>禁止随机码清除</item>
+    </string-array>
+
+    <string-array name="array_Para_CurrentSampleMode">
+        <item>配置参数时采样</item>
+        <item>配置参数时不采样</item>
+    </string-array>
+
+    <string-array name="array_Para_CurrentThreshold">
+        <item>使用仪表配置</item>
+        <item>固定门限：0</item>
+        <item>固定门限：1</item>
+        <item>固定门限：2</item>
+        <item>固定门限：3</item>
+        <item>固定门限：4</item>
+        <item>固定门限：5</item>
+        <item>固定门限：6</item>
+    </string-array>
+
+    <string-array name="array_Para_CurrentDetectMode">
+        <item>使用仪表配置</item>
+        <item>老版低频检测</item>
+        <item>老版高频检测</item>
+        <item>V3以上版低频检测</item>
+        <item>V3以上版高频检测</item>
+    </string-array>
+
+    <string-array name="array_Para_CurrentAlarm">
+        <item>使用仪表配置</item>
+        <item>固定不报警</item>
+        <item>固定低频报警</item>
+        <item>固定高频报警</item>
+        <item>固定一直报警</item>
+    </string-array>
+
+    <string-array name="array_Para_CellSampleMode">
+        <item>配置参数时采样</item>
+        <item>配置参数时不采样</item>
+    </string-array>
+
+    <string-array name="array_Para_CellAlarm">
+        <item>使用仪表配置</item>
+        <item>固定不报警</item>
+        <item>固定低频报警</item>
+        <item>固定高频报警</item>
+        <item>固定一直报警</item>
+    </string-array>
+
+    <string-array name="array_Para_ComuSecurityMode">
+        <item>使用仪表配置</item>
+        <item>不加密</item>
+        <item>普通加密</item>
+        <item>高级动态加密</item>
+        <item>AES动态加密</item>
+        <item>云加密</item>
+        <item>AES云加密</item>
+    </string-array>
+
+    <string-array name="array_Para_TimeLockAlarm">
+        <item>使用默认提示</item>
+        <item>使用自定义提示(1-255)</item>
+    </string-array>
+
+    <string-array name="array_Para_TimeLockMode">
+        <item>用仪表随机码</item>
+        <item>用两种随机码</item>
+        <item>用加密器随机码</item>
+    </string-array>
+
+    <string-array name="array_Para_Unique">
+        <item>允许使用</item>
+        <item>禁止使用</item>
+    </string-array>
+
+    <string-array name="array_Cell_Addr">
+        <item>00</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+    </string-array>
+
+</resources>

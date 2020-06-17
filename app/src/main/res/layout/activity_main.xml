@@ -13,7 +13,7 @@
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
-        android:background="@drawable/ic_text_selector"
+        android:background="@drawable/ds15_arrow"
         android:textSize="20sp"
         app:arrowDrawable="@drawable/smart_arrow_ds15"
         app:arrowTint="@android:color/darker_gray"
@@ -57,5 +57,11 @@
         app:itemWidth="160dp"
         app:numColumns="3" />
 
+    <com.boylab.library.twowayview.widget.TwoWayView
+        android:id="@+id/twoWayView"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

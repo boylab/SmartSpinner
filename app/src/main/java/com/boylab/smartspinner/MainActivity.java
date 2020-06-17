@@ -2,6 +2,7 @@ package com.boylab.smartspinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -11,13 +12,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.PopupWindow;
 
+import com.boylab.library.LayoutAdapter;
 import com.boylab.library.SmartSpinner;
 
 import com.boylab.library.twowayview.TwoWayLayoutManager;
+import com.boylab.library.twowayview.widget.BaseLayoutManager;
 import com.boylab.library.twowayview.widget.DividerItemDecoration;
+import com.boylab.library.twowayview.widget.GridLayoutManager;
 import com.boylab.library.twowayview.widget.ListLayoutManager;
 import com.boylab.library.twowayview.widget.TwoWayView;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -36,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
         smartSpinner01.attachDataSource(dataset);
         Log.i(">>>boylab>>", ">>>onCreate: " + smartSpinner01.adapter);
 
-
         smartSpinner02 = findViewById(R.id.smart_Spinner02);
         smartSpinner02.attachDataSource(dataset);
         Log.i(">>>boylab>>", ">>>onCreate: " + smartSpinner02.adapter);
@@ -44,6 +48,41 @@ public class MainActivity extends AppCompatActivity {
         smartSpinner03 = findViewById(R.id.smart_Spinner03);
         smartSpinner03.attachDataSource(dataset);
         Log.i(">>>boylab>>", ">>>onCreate: " + smartSpinner03.adapter);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        TwoWayView twoWayView = findViewById(R.id.twoWayView);
+
+        TwoWayLayoutManager layoutManager = new ListLayoutManager(this, TwoWayLayoutManager.Orientation.HORIZONTAL);
+        /*TwoWayLayoutManager layoutManager = new GridLayoutManager(TwoWayLayoutManager.Orientation.VERTICAL, 3, 3);*/
+        twoWayView.setLayoutManager(layoutManager);
+
+        Drawable divider_horizontal = getResources().getDrawable(R.drawable.divider_horizontal);
+        Drawable divider_vertical = getResources().getDrawable(R.drawable.divider_vertical);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(divider_horizontal);
+        twoWayView.addItemDecoration(dividerItemDecoration);
+
+        RecyclerViewAdapter layoutAdapter = new RecyclerViewAdapter(this, dataset);
+        twoWayView.setAdapter(layoutAdapter);
+
+
+
+
+
 
     }
 

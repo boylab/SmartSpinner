@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 
@@ -143,7 +145,7 @@ public class SmartSpinner extends AppCompatTextView {
         init(context, attrs);
     }
 
-    @Override
+    /*@Override
     public Parcelable onSaveInstanceState() {
         Bundle bundle = new Bundle();
         bundle.putParcelable(INSTANCE_STATE, super.onSaveInstanceState());
@@ -179,7 +181,7 @@ public class SmartSpinner extends AppCompatTextView {
             savedState = bundle.getParcelable(INSTANCE_STATE);
         }
         super.onRestoreInstanceState(savedState);
-    }
+    }*/
 
     private void parseRes(Context context, AttributeSet attrs) {
         Resources resources = getResources();
@@ -221,6 +223,7 @@ public class SmartSpinner extends AppCompatTextView {
 
     private void init(Context context, AttributeSet attrs) {
         parseRes(context, attrs);
+
         setBackgroundResource(textDrawableRes);
         setTextColor(textTint);
         setMaxLines(1);
@@ -234,6 +237,7 @@ public class SmartSpinner extends AppCompatTextView {
         twoWayView = rootView.findViewById(R.id.spinner_TwoWayView);
         twoWayView.setHasFixedSize(true);
         twoWayView.setLongClickable(true);
+        //twoWayView.setFocusable(true);
 
         final Drawable divider = getResources().getDrawable(R.drawable.spinner_divider);
         int dividerWidth = divider.getIntrinsicWidth();
@@ -248,11 +252,17 @@ public class SmartSpinner extends AppCompatTextView {
         }
         twoWayView.setLayoutManager(layoutManager);
 
-        popupWindow = new PopupWindow(context);
+        //popupWindow = new PopupWindow(context);
+        popupWindow = new PopupWindow(rootView);
+
+        popupWindow.setFocusable(true);
         popupWindow.setTouchable(true);
-        Drawable drawable = ContextCompat.getDrawable(context, R.drawable.spinner_drawable);
+        popupWindow.setOutsideTouchable(true);
+
+        //Drawable drawable = ContextCompat.getDrawable(context, R.drawable.spinner_drawable);
+        Drawable drawable = ContextCompat.getDrawable(context, R.drawable.smart_arrow);
         popupWindow.setBackgroundDrawable(drawable);
-        popupWindow.setContentView(rootView);
+        //popupWindow.setContentView(rootView);
 
         measureDisplayLocation();
         freshPopupWindow(0);
@@ -445,8 +455,9 @@ public class SmartSpinner extends AppCompatTextView {
 
                 setText(adapter.getItemInDataset(position));
 
+                Log.i(">>>boylab>>", ">>>onItemSelected: popupWindow.isShowing() = "+popupWindow.isShowing());
+                Log.i(">>>boylab>>", ">>>onItemSelected: popupWindow.isTouchable() = "+popupWindow.isTouchable());
                 dismissDropDown();
-
             }
 
             @Override
@@ -474,11 +485,18 @@ public class SmartSpinner extends AppCompatTextView {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        if (adapter.getItemCount() <= 0){
+            return super.onTouchEvent(event);
+        }
+
         if (isEnabled() && event.getAction() == MotionEvent.ACTION_UP) {
-            if (!popupWindow.isShowing() && adapter.getItemCount() > 0) {
-                showDropDown();
-            } else {
+            Log.i(">>>boylab>>", ">>>onTouchEvent: "+(!popupWindow.isShowing()));
+            Log.i(">>>boylab>>", ">>>onTouchEvent: "+adapter.getItemCount());
+
+            if (popupWindow.isShowing()) {
                 dismissDropDown();
+            } else {
+                showDropDown();
             }
         }
         return super.onTouchEvent(event);
@@ -496,21 +514,35 @@ public class SmartSpinner extends AppCompatTextView {
         if (!isArrowHidden) {
             animateArrow(false);
         }
+        /*popupWindow.setFocusable(false);
+        popupWindow.setTouchable(false);
+        popupWindow.setOutsideTouchable(false);*/
         popupWindow.dismiss();
+
     }
 
     public void showDropDown() {
         if (!isArrowHidden) {
             animateArrow(true);
         }
+
         popupWindow.showAsDropDown(this, 0, 0);
-        final RelativeLayout wayView = (RelativeLayout) popupWindow.getContentView();
+        popupWindow.setFocusable(true); //获取焦点
+        popupWindow.setTouchable(true); //设置可触摸
+        popupWindow.setOutsideTouchable(true);  //设置触摸区域外可隐藏PopupWindow
+
+
+        //popupWindow.update();
+        Log.i(">>>boylab>>", ">>>showDropDown: popupWindow.isShowing() = "+popupWindow.isShowing());
+        Log.i(">>>boylab>>", ">>>showDropDown: popupWindow.isTouchable() = "+popupWindow.isTouchable());
+
+        /*final RelativeLayout wayView = (RelativeLayout) popupWindow.getContentView();
         if (wayView != null) {
             wayView.setVerticalScrollBarEnabled(false);
             wayView.setHorizontalScrollBarEnabled(false);
             wayView.setVerticalFadingEdgeEnabled(false);
             wayView.setHorizontalFadingEdgeEnabled(false);
-        }
+        }*/
     }
 
     private int getPopUpHeight() {
