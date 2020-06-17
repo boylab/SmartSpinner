@@ -130,6 +130,16 @@ public class SmartSpinner extends AppCompatTextView {
     @Nullable
     private ObjectAnimator arrowAnimator = null;
 
+    private boolean isShowing = false;
+
+    public boolean isShowing() {
+        return isShowing;
+    }
+
+    public void setShowing(boolean showing) {
+        isShowing = showing;
+    }
+
     public SmartSpinner(Context context) {
         super(context);
         init(context, null);
@@ -144,44 +154,6 @@ public class SmartSpinner extends AppCompatTextView {
         super(context, attrs, defStyleAttr);
         init(context, attrs);
     }
-
-    /*@Override
-    public Parcelable onSaveInstanceState() {
-        Bundle bundle = new Bundle();
-        bundle.putParcelable(INSTANCE_STATE, super.onSaveInstanceState());
-        bundle.putInt(SELECTED_INDEX, selectedIndex);
-        bundle.putBoolean(IS_ARROW_HIDDEN, isArrowHidden);
-        bundle.putInt(ARROW_DRAWABLE_RES_ID, arrowDrawableRes);
-        if (popupWindow != null) {
-            bundle.putBoolean(IS_POPUP_SHOWING, popupWindow.isShowing());
-        }
-        return bundle;
-    }
-
-    @Override
-    public void onRestoreInstanceState(Parcelable savedState) {
-        if (savedState instanceof Bundle) {
-            Bundle bundle = (Bundle) savedState;
-            selectedIndex = bundle.getInt(SELECTED_INDEX);
-            if (adapter != null) {
-                setText(selectedTextFormatter.format(adapter.getItemInDataset(selectedIndex)).toString());
-                adapter.setSelectedIndex(selectedIndex);
-            }
-
-            if (bundle.getBoolean(IS_POPUP_SHOWING)) {
-                if (popupWindow != null) {
-                    // Post the show request into the looper to avoid bad token exception
-                    // TODO: 2019/11/21
-                    showDropDown();
-                    //post(this::showDropDown);
-                }
-            }
-            isArrowHidden = bundle.getBoolean(IS_ARROW_HIDDEN, false);
-            arrowDrawableRes = bundle.getInt(ARROW_DRAWABLE_RES_ID);
-            savedState = bundle.getParcelable(INSTANCE_STATE);
-        }
-        super.onRestoreInstanceState(savedState);
-    }*/
 
     private void parseRes(Context context, AttributeSet attrs) {
         Resources resources = getResources();
@@ -237,7 +209,6 @@ public class SmartSpinner extends AppCompatTextView {
         twoWayView = rootView.findViewById(R.id.spinner_TwoWayView);
         twoWayView.setHasFixedSize(true);
         twoWayView.setLongClickable(true);
-        //twoWayView.setFocusable(true);
 
         final Drawable divider = getResources().getDrawable(R.drawable.spinner_divider);
         int dividerWidth = divider.getIntrinsicWidth();
@@ -254,14 +225,15 @@ public class SmartSpinner extends AppCompatTextView {
 
         //popupWindow = new PopupWindow(context);
         popupWindow = new PopupWindow(rootView);
-
-        popupWindow.setFocusable(true);
-        popupWindow.setTouchable(true);
-        popupWindow.setOutsideTouchable(true);
-
-        //Drawable drawable = ContextCompat.getDrawable(context, R.drawable.spinner_drawable);
         Drawable drawable = ContextCompat.getDrawable(context, R.drawable.smart_arrow);
         popupWindow.setBackgroundDrawable(drawable);
+
+        popupWindow.setFocusable(false);
+        popupWindow.setTouchable(false);
+        popupWindow.setOutsideTouchable(false);
+
+        //Drawable drawable = ContextCompat.getDrawable(context, R.drawable.spinner_drawable);
+
         //popupWindow.setContentView(rootView);
 
         measureDisplayLocation();
@@ -312,7 +284,6 @@ public class SmartSpinner extends AppCompatTextView {
     }
 
     private int getParentVerticalOffset() {
-
         return parentVerticalOffset = location[VERTICAL_OFFSET];
     }
 
@@ -490,16 +461,16 @@ public class SmartSpinner extends AppCompatTextView {
         }
 
         if (isEnabled() && event.getAction() == MotionEvent.ACTION_UP) {
-            Log.i(">>>boylab>>", ">>>onTouchEvent: "+(!popupWindow.isShowing()));
+            Log.i(">>>boylab>>", ">>>onTouchEvent: "+(isShowing()));
             Log.i(">>>boylab>>", ">>>onTouchEvent: "+adapter.getItemCount());
 
-            if (popupWindow.isShowing()) {
+            if (isShowing()) {
                 dismissDropDown();
             } else {
                 showDropDown();
             }
         }
-        return super.onTouchEvent(event);
+        return true;
     }
 
     private void animateArrow(boolean shouldRotateUp) {
@@ -514,10 +485,10 @@ public class SmartSpinner extends AppCompatTextView {
         if (!isArrowHidden) {
             animateArrow(false);
         }
-        /*popupWindow.setFocusable(false);
-        popupWindow.setTouchable(false);
-        popupWindow.setOutsideTouchable(false);*/
+        Log.i(">>>boylab>>", "dismissDropDown: "+popupWindow);
+        Log.i(">>>boylab>>", "dismissDropDown: "+popupWindow.isFocusable());
         popupWindow.dismiss();
+        setShowing(false);
 
     }
 
@@ -527,12 +498,13 @@ public class SmartSpinner extends AppCompatTextView {
         }
 
         popupWindow.showAsDropDown(this, 0, 0);
+        setShowing(true);
+
+        Log.i(">>>boylab>>", "showDropDown: "+popupWindow);
         popupWindow.setFocusable(true); //获取焦点
         popupWindow.setTouchable(true); //设置可触摸
         popupWindow.setOutsideTouchable(true);  //设置触摸区域外可隐藏PopupWindow
-
-
-        //popupWindow.update();
+        popupWindow.update();
         Log.i(">>>boylab>>", ">>>showDropDown: popupWindow.isShowing() = "+popupWindow.isShowing());
         Log.i(">>>boylab>>", ">>>showDropDown: popupWindow.isTouchable() = "+popupWindow.isTouchable());
 
