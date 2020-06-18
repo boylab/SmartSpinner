@@ -6,56 +6,38 @@
     android:layout_height="match_parent"
     tools:context="com.boylab.example.MainActivity">
 
-    <com.boylab.smartspinner.SmartSpinner2
+    <com.boylab.smartspinner.SmartSpinner
         android:id="@+id/smart_Spinner01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
         android:background="@drawable/ds15_arrow"
-        android:textSize="20sp"
-        app:arrowDrawable="@drawable/smart_arrow_ds15"
-        app:arrowTint="@android:color/darker_gray"
-        app:entries="@array/array_PhotoCamera"
-        app:itemHeight="50dp"
-        app:itemWidth="160dp"
-        app:numColumns="1" />
+        android:textSize="20sp" />
 
 
-    <com.boylab.smartspinner.SmartSpinner2
+    <com.boylab.smartspinner.SmartSpinner
         android:id="@+id/smart_Spinner02"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
         android:layout_below="@+id/smart_Spinner01"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
         android:background="@drawable/ic_text_selector"
-        android:textSize="20sp"
-        app:arrowDrawable="@drawable/smart_arrow_ds15"
-        app:arrowTint="@android:color/darker_gray"
-        app:entries="@array/array_PhotoCamera"
-        app:itemHeight="50dp"
-        app:itemWidth="160dp"
-        app:numColumns="2" />
+        android:textSize="20sp" />
 
-    <com.boylab.smartspinner.SmartSpinner2
+    <com.boylab.smartspinner.SmartSpinner
         android:id="@+id/smart_Spinner03"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
         android:layout_below="@+id/smart_Spinner02"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
         android:background="@drawable/ic_text_selector"
-        android:textSize="20sp"
-        app:arrowDrawable="@drawable/smart_arrow_ds15"
-        app:arrowTint="@android:color/darker_gray"
-        app:entries="@array/array_PhotoCamera"
-        app:itemHeight="50dp"
-        app:itemWidth="160dp"
-        app:numColumns="3" />
+        android:textSize="20sp" />
 
     <com.boylab.smartspinner.twowayview.widget.TwoWayView
         android:id="@+id/twoWayView"

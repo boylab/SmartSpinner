@@ -40,7 +40,7 @@
         <attr name="android:orientation" tools:ignore="ResourceName" />
     </declare-styleable>
 
-    <declare-styleable name="SmartSpinner">
+    <declare-styleable name="SmartSpinner2">
         <!--spinner background、文字背景-->
         <attr name="textDrawable" format="reference|color" />
         <attr name="textTint" format="color" />

@@ -5,7 +5,7 @@
     android:layout_gravity="center"
     android:padding="@dimen/one_and_a_half_grid_unit">
 
-    <com.boylab.library.twowayview.widget.TwoWayView
+    <com.boylab.smartspinner.twowayview.widget.TwoWayView
         android:id="@+id/spinner_TwoWayView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
