@@ -12,7 +12,6 @@ import com.boylab.smartspinner.twowayview.TwoWayLayoutManager;
 import com.boylab.smartspinner.twowayview.widget.DividerItemDecoration;
 import com.boylab.smartspinner.twowayview.widget.ListLayoutManager;
 import com.boylab.smartspinner.twowayview.widget.TwoWayView;
-import com.boylab.smartspinner.R;
 
 import java.util.Arrays;
 import java.util.LinkedList;

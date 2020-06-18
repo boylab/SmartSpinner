@@ -1,4 +1,4 @@
-package com.boylab.smartspinner.twowayview;
+package com.boylab.smartspinner;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;

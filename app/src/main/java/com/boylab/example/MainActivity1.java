@@ -5,7 +5,6 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.boylab.smartspinner.R;
 import com.boylab.smartspinner.SmartSpinner;
 
 import java.util.Arrays;

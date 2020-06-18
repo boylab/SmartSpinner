@@ -8,6 +8,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -101,7 +102,7 @@ public class SmartSpinner extends AppCompatTextView {
         arrowTint = typedArray.getColor(R.styleable.SmartSpinner3_arrowTint, getResources().getColor(android.R.color.black));
         arrowDrawableRes = typedArray.getResourceId(R.styleable.SmartSpinner3_arrowDrawable, R.drawable.smart_arrow);
 
-        numColumns = typedArray.getInt(R.styleable.SmartSpinner3_numColumns, 1);
+        numColumns = typedArray.getInt(R.styleable.SmartSpinner3_numColumns, 2);
         numRows = typedArray.getInt(R.styleable.SmartSpinner3_numRows, 1);
         itemWidth = typedArray.getDimensionPixelSize(R.styleable.SmartSpinner3_itemWidth, 100);
         itemHeight = typedArray.getDimensionPixelSize(R.styleable.SmartSpinner3_itemHeight, 50);
@@ -224,6 +225,22 @@ public class SmartSpinner extends AppCompatTextView {
             }
         });
 
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        Log.i(">>>boylab>>", ">>>onTouchEvent: "+isEnabled());
+        Log.i(">>>boylab>>", ">>>onTouchEvent: "+(event.getAction() == MotionEvent.ACTION_UP));
+
+        if (isEnabled() && event.getAction() == MotionEvent.ACTION_UP) {
+            Log.i(">>>boylab>>", ">>>onTouchEvent123: "+popupWindow.isShowing());
+            if (popupWindow.isShowing()) {
+                dismiss();
+            } else {
+                showPopupWindow(this);
+            }
+        }
+        return super.onTouchEvent(event);
     }
 
     public void showPopupWindow(View anchor){
