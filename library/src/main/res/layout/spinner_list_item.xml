@@ -10,4 +10,5 @@
     android:singleLine="true"
     android:textSize="20sp"
     tools:text="Item"
+    android:descendantFocusability="blocksDescendants"
     tools:textColor="@android:color/black" />
