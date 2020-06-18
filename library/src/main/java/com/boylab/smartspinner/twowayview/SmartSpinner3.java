@@ -16,6 +16,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.boylab.smartspinner.R;
+import com.boylab.smartspinner.RecyclerViewAdapter;
 import com.boylab.smartspinner.twowayview.widget.ListLayoutManager;
 import com.boylab.smartspinner.twowayview.widget.TwoWayView;
 
@@ -25,21 +26,21 @@ import java.util.List;
  * Created by pengle on 2020/06/18
  * Email: pengle609@163.com
  */
-public class SmartSpinner2 extends AppCompatTextView {
+public class SmartSpinner3 extends AppCompatTextView {
 
-    private MyPopupWindow popupWindow;
+    /*private MyPopupWindow popupWindow;*/
 
-    public SmartSpinner2(Context context) {
+    public SmartSpinner3(Context context) {
         super(context);
         init(context, null);
     }
 
-    public SmartSpinner2(Context context, AttributeSet attrs) {
+    public SmartSpinner3(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
     }
 
-    public SmartSpinner2(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SmartSpinner3(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context, attrs);
     }
@@ -48,15 +49,15 @@ public class SmartSpinner2 extends AppCompatTextView {
         // TODO: 2020/6/18 初始化
     }
 
-    public <T> void attachDataSource(@NonNull List<String> list) {
+    /*public <T> void attachDataSource(@NonNull List<String> list) {
         View rootView = LayoutInflater.from(context).inflate(com.boylab.smartspinner.R.layout.spinner_popupview, null);
         TwoWayView twoWayView = rootView.findViewById(R.id.spinner_TwoWayView);
         twoWayView.setHasFixedSize(true);
         twoWayView.setLongClickable(true);
 
-       /* final Drawable divider = context.getResources().getDrawable(R.drawable.spinner_divider);
+       *//* final Drawable divider = context.getResources().getDrawable(R.drawable.spinner_divider);
         int dividerWidth = divider.getIntrinsicWidth();
-        int dividerHeight = divider.getIntrinsicHeight();*/
+        int dividerHeight = divider.getIntrinsicHeight();*//*
 
         RecyclerView.LayoutManager layoutManager = new ListLayoutManager(context, TwoWayLayoutManager.Orientation.VERTICAL);
 
@@ -108,5 +109,5 @@ public class SmartSpinner2 extends AppCompatTextView {
             }
         }
         return super.onTouchEvent(event);
-    }
+    }*/
 }

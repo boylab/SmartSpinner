@@ -4,12 +4,10 @@ import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -147,30 +145,30 @@ public class SmartSpinner2 extends AppCompatTextView {
         setPadding(resources.getDimensionPixelSize(R.dimen.three_grid_unit), defaultPadding, defaultPadding, defaultPadding);
         setClickable(true);
 
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SmartSpinner2);
-        textDrawableRes = typedArray.getResourceId(R.styleable.SmartSpinner2_textDrawable, R.drawable.ic_text_selector);
-        textTint = typedArray.getColor(R.styleable.SmartSpinner2_textTint, SmartUtil.getDefaultTextColor(context));
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SmartSpinner3);
+        textDrawableRes = typedArray.getResourceId(R.styleable.SmartSpinner3_textDrawable, R.drawable.ic_text_selector);
+        textTint = typedArray.getColor(R.styleable.SmartSpinner3_textTint, SmartUtil.getDefaultTextColor(context));
 
-        isArrowHidden = typedArray.getBoolean(R.styleable.SmartSpinner2_arrowHide, false);
-        arrowTint = typedArray.getColor(R.styleable.SmartSpinner2_arrowTint, getResources().getColor(android.R.color.black));
-        arrowDrawableRes = typedArray.getResourceId(R.styleable.SmartSpinner2_arrowDrawable, R.drawable.smart_arrow);
+        isArrowHidden = typedArray.getBoolean(R.styleable.SmartSpinner3_arrowHide, false);
+        arrowTint = typedArray.getColor(R.styleable.SmartSpinner3_arrowTint, getResources().getColor(android.R.color.black));
+        arrowDrawableRes = typedArray.getResourceId(R.styleable.SmartSpinner3_arrowDrawable, R.drawable.smart_arrow);
 
-        numColumns = typedArray.getInt(R.styleable.SmartSpinner2_numColumns, 1);
-        numRows = typedArray.getInt(R.styleable.SmartSpinner2_numRows, 1);
-        itemWidth = typedArray.getDimensionPixelSize(R.styleable.SmartSpinner2_itemWidth, 100);
-        itemHeight = typedArray.getDimensionPixelSize(R.styleable.SmartSpinner2_itemHeight, 50);
+        numColumns = typedArray.getInt(R.styleable.SmartSpinner3_numColumns, 1);
+        numRows = typedArray.getInt(R.styleable.SmartSpinner3_numRows, 1);
+        itemWidth = typedArray.getDimensionPixelSize(R.styleable.SmartSpinner3_itemWidth, 100);
+        itemHeight = typedArray.getDimensionPixelSize(R.styleable.SmartSpinner3_itemHeight, 50);
 
-        itemPaddingTop = typedArray.getDimensionPixelSize(R.styleable.SmartSpinner2_itemPaddingTop, 0);
-        itemPaddingLeft = typedArray.getDimensionPixelSize(R.styleable.SmartSpinner2_itemPaddingLeft, 0);
-        itemPaddingBottom = typedArray.getDimensionPixelSize(R.styleable.SmartSpinner2_itemPaddingBottom, 0);
-        itemPaddingRight = typedArray.getDimensionPixelSize(R.styleable.SmartSpinner2_itemPaddingRight, 0);
+        itemPaddingTop = typedArray.getDimensionPixelSize(R.styleable.SmartSpinner3_itemPaddingTop, 0);
+        itemPaddingLeft = typedArray.getDimensionPixelSize(R.styleable.SmartSpinner3_itemPaddingLeft, 0);
+        itemPaddingBottom = typedArray.getDimensionPixelSize(R.styleable.SmartSpinner3_itemPaddingBottom, 0);
+        itemPaddingRight = typedArray.getDimensionPixelSize(R.styleable.SmartSpinner3_itemPaddingRight, 0);
 
-        itemDrawableResId = typedArray.getResourceId(R.styleable.SmartSpinner2_itemDrawable, R.drawable.smart_arrow);
-        itemGravity = SpinnerItemGravity.fromId(typedArray.getInt(R.styleable.SmartSpinner2_itemGravity, SpinnerItemGravity.CENTER.ordinal()));
-        itemChecked = typedArray.getBoolean(R.styleable.SmartSpinner2_itemChecked, false);
+        itemDrawableResId = typedArray.getResourceId(R.styleable.SmartSpinner3_itemDrawable, R.drawable.smart_arrow);
+        itemGravity = SpinnerItemGravity.fromId(typedArray.getInt(R.styleable.SmartSpinner3_itemGravity, SpinnerItemGravity.CENTER.ordinal()));
+        itemChecked = typedArray.getBoolean(R.styleable.SmartSpinner3_itemChecked, false);
 
         // TODO: 2019/12/4 need to use
-        CharSequence[] entries = typedArray.getTextArray(R.styleable.SmartSpinner2_entries);
+        CharSequence[] entries = typedArray.getTextArray(R.styleable.SmartSpinner3_entries);
         charSequences = ((entries == null) ? new ArrayList<CharSequence>() : Arrays.asList(entries));
 
         typedArray.recycle();
@@ -212,7 +210,7 @@ public class SmartSpinner2 extends AppCompatTextView {
     public void initPopup(){
         //popupWindow = new PopupWindow(context);
         popupWindow = new PopupWindow(rootView);
-        Drawable drawable = ContextCompat.getDrawable(context, R.drawable.smart_arrow);
+        Drawable drawable = ContextCompat.getDrawable(getContext(), R.drawable.smart_arrow);
         popupWindow.setBackgroundDrawable(drawable);
     //popupWindow.setContentView(rootView);
 
@@ -412,10 +410,10 @@ public class SmartSpinner2 extends AppCompatTextView {
         }
 
         if (isEnabled() && event.getAction() == MotionEvent.ACTION_UP) {
-            Log.i(">>>boylab>>", ">>>onTouchEvent: "+(isShowing()));
+            Log.i(">>>boylab>>", ">>>onTouchEvent: "+(popupWindow.isShowing()));
             Log.i(">>>boylab>>", ">>>onTouchEvent: "+adapter.getItemCount());
 
-            if (isShowing()) {
+            if (popupWindow.isShowing()) {
                 dismissDropDown();
             } else {
                 showDropDown();
