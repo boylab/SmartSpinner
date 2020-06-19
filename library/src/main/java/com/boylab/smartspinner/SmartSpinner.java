@@ -39,6 +39,7 @@ public class SmartSpinner extends AppCompatTextView {
     private boolean isArrowHidden;
     private int arrowTint;
     private @DrawableRes int arrowDrawableRes;
+
     private int numColumns = 1, numRows;
 
     private SpinnerItemAttrs itemAttrs = new SpinnerItemAttrs();
@@ -50,7 +51,6 @@ public class SmartSpinner extends AppCompatTextView {
     private TwoWayLayoutManager layoutManager;
     public SmartViewAdapter adapter;
 
-    private AdapterView.OnItemSelectedListener onItemSelectedListener;
     private OnSpinnerItemListener onSpinnerItemListener;
 
     private int[] location = new int[4];
@@ -78,13 +78,18 @@ public class SmartSpinner extends AppCompatTextView {
         initView();
     }
 
+    public void setOnSpinnerItemListener(OnSpinnerItemListener onSpinnerItemListener) {
+        this.onSpinnerItemListener = onSpinnerItemListener;
+    }
+
     private void parseRes(Context context, AttributeSet attrs) {
 
         int defaultPadding = getResources().getDimensionPixelSize(R.dimen.one_and_a_half_grid_unit);
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SmartSpinner);
         textDrawableRes = typedArray.getResourceId(R.styleable.SmartSpinner_textDrawable, R.drawable.item_text_selector);
-        textTint = typedArray.getColor(R.styleable.SmartSpinner_textTint, SmartUtil.getDefaultTextColor(context));
+        setBackgroundResource(textDrawableRes);
+        setMaxLines(1);
 
         isArrowHidden = typedArray.getBoolean(R.styleable.SmartSpinner_arrowHide, false);
         arrowTint = typedArray.getColor(R.styleable.SmartSpinner_arrowTint, getResources().getColor(android.R.color.black));
@@ -102,10 +107,6 @@ public class SmartSpinner extends AppCompatTextView {
     }
 
     private void initView() {
-        setBackgroundResource(textDrawableRes);
-        setTextColor(textTint);
-        setMaxLines(1);
-
         setClickable(true);
         setWidth(itemAttrs.getItemWidth());
         setHeight(itemAttrs.getItemHeight());
@@ -186,12 +187,8 @@ public class SmartSpinner extends AppCompatTextView {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                if (onItemSelectedListener != null) {
-                    onItemSelectedListener.onItemSelected(parent, view, position, id);
-                }
-
-                if (onItemSelectedListener != null) {
-                    onItemSelectedListener.onItemSelected(parent, view, position, id);
+                if (onSpinnerItemListener != null) {
+                    onSpinnerItemListener.onItemClick(SmartSpinner.this, view, position, id);
                 }
 
                 adapter.setSelectedIndex(position);

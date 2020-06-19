@@ -3,7 +3,7 @@ package com.boylab.smartspinner;
 import android.view.View;
 import android.widget.AdapterView;
 
-public interface OnSpinnerItemListener extends AdapterView.OnItemClickListener {
+public interface OnSpinnerItemListener {
 
-    void onItemClick(SmartSpinner2 parent, View view, int position, long id);
+    void onItemClick(SmartSpinner parent, View view, int position, long id);
 }
