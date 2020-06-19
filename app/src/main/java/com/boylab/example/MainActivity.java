@@ -3,6 +3,7 @@ package com.boylab.example;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 
@@ -28,12 +29,7 @@ public class MainActivity extends AppCompatActivity {
         smartSpinner01.setOnSpinnerItemListener(new OnSpinnerItemListener() {
             @Override
             public void onItemClick(SmartSpinner parent, View view, int position, long id) {
-
-            }
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                Log.i(">>>>>", "onItemClick: "+position);
             }
         });
 
