@@ -5,13 +5,7 @@ NiceSpinner is a re-implementation of the default Android's spinner, with a nice
 
 It follows the material design guidelines, and it is compatible starting from Api 14.
 
-
-
 ## Usage
-
-    arrowDrawable
-# arrowDrawable #
-
 
 The usage is pretty straightforward. Add the tag into the XML layout:
    ``` <com.boylab.smartspinner.SmartSpinner
@@ -79,7 +73,8 @@ allprojects {
 }
 
 dependencies {
-    implementation 'com.github.arcadefire:nice-spinner:1.4.4'
+
+    implementation 'com.github.boylab:SmartSpinner:1.0.0'
 }
 ```
 
@@ -94,8 +89,8 @@ Or declare it into your `pom.xml`:
 </repositories>
 
 <dependency>
-    <groupId>com.github.arcadefire</groupId>
-    <artifactId>nice-spinner</artifactId>
-    <version>1.4.4</version>
+    <groupId>com.github.boylab</groupId>
+    <artifactId>SmartSpinner</artifactId>
+    <version>1.0.0</version>
 </dependency>
 ```
