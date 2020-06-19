@@ -20,6 +20,6 @@
     <solid android:color="#00000000"/>
 
     <size android:width="@dimen/spinner_divider"
-          android:height="@dimen/spinner_divider" />
+        android:height="@dimen/spinner_divider" />
 
 </shape>
