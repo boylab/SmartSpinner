@@ -7,6 +7,30 @@
         <enum name="center" value="2" />
     </attr>
 
+    <declare-styleable name="SmartSpinner">
+        <!--spinner background、文字背景-->
+        <attr name="textDrawable" format="reference|color" />
+        <attr name="textTint" format="color" />
+
+        <!--arrow ishide、tint、drawable-->
+        <attr name="arrowHide" format="boolean" />
+        <attr name="arrowTint" format="color" />
+        <attr name="arrowDrawable" format="reference|color" />
+
+        <attr name="numColumns" format="integer" />
+        <attr name="numRows" format="integer" />
+        <attr name="itemWidth" format="dimension" />
+        <attr name="itemHeight" format="dimension" />
+        <attr name="itemDrawable" format="reference|color" />
+        <attr name="ItemGravity" />
+        <attr name="itemChecked" format="boolean" />
+        <attr name="itemPaddingTop" format="dimension" />
+        <attr name="itemPaddingLeft" format="dimension" />
+        <attr name="itemPaddingBottom" format="dimension" />
+        <attr name="itemPaddingRight" format="dimension" />
+        <attr name="entries" format="reference" />
+    </declare-styleable>
+
     <declare-styleable name="twowayview_TwoWayView">
         <attr name="twowayview_layoutManager" format="string" />
     </declare-styleable>
@@ -40,27 +64,4 @@
         <attr name="android:orientation" tools:ignore="ResourceName" />
     </declare-styleable>
 
-    <declare-styleable name="SmartSpinner">
-        <!--spinner background、文字背景-->
-        <attr name="textDrawable" format="reference|color" />
-        <attr name="textTint" format="color" />
-
-        <!--arrow ishide、tint、drawable-->
-        <attr name="arrowHide" format="boolean" />
-        <attr name="arrowTint" format="color" />
-        <attr name="arrowDrawable" format="reference|color" />
-
-        <attr name="numColumns" format="integer" />
-        <attr name="numRows" format="integer" />
-        <attr name="itemWidth" format="dimension" />
-        <attr name="itemHeight" format="dimension" />
-        <attr name="itemDrawable" format="reference|color" />
-        <attr name="ItemGravity" />
-        <attr name="itemChecked" format="boolean" />
-        <attr name="itemPaddingTop" format="dimension" />
-        <attr name="itemPaddingLeft" format="dimension" />
-        <attr name="itemPaddingBottom" format="dimension" />
-        <attr name="itemPaddingRight" format="dimension" />
-        <attr name="entries" format="reference" />
-    </declare-styleable>
 </resources>

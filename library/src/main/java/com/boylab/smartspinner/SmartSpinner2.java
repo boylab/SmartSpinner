@@ -145,7 +145,7 @@ public class SmartSpinner2 extends AppCompatTextView {
         setClickable(true);
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SmartSpinner);
-        textDrawableRes = typedArray.getResourceId(R.styleable.SmartSpinner_textDrawable, R.drawable.ic_text_selector);
+        textDrawableRes = typedArray.getResourceId(R.styleable.SmartSpinner_textDrawable, R.drawable.item_text_selector);
         textTint = typedArray.getColor(R.styleable.SmartSpinner_textTint, SmartUtil.getDefaultTextColor(context));
 
         isArrowHidden = typedArray.getBoolean(R.styleable.SmartSpinner_arrowHide, false);

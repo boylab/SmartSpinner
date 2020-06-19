@@ -1,34 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string-array name="user">
-        <item name="u_account">账号管理</item>
-        <item name="u_sub_account">子账号管理</item>
-        <item name="u_equipment">设备管理</item>
-        <item name="u_page_settings">页面设置</item>
-        <item name="u_sys_settings">系统设置</item>
-        <item name="u_about">关于</item>
-        <item name="u_help">帮助</item>
-        <item name="u_exit">退出系统</item>
-    </string-array>
-
-    <string-array name="array_BaseEdition">
-        <item>基础摄像头</item>
-        <item>普通摄像头</item>
-        <item>专业摄像头</item>
-        <item>旗舰摄像头</item>
-    </string-array>
-
-    <!--拍照摄像头配件-->
-    <string-array name="array_PhotoCamera">
-        <item>0 个</item>
-        <item>1 个</item>
-        <item>2 个</item>
-        <item>3 个</item>
-        <item>4 个</item>
-        <item>5 个</item>
-        <item>6 个</item>
-        <item>7 个</item>
-    </string-array>
-
 </resources>

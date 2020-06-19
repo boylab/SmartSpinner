@@ -12,7 +12,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    SmartSpinner smartSpinner01, smartSpinner02, smartSpinner03;
+    private SmartSpinner smartSpinner01, smartSpinner02, smartSpinner03;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

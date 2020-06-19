@@ -1,12 +1,9 @@
 package com.boylab.smartspinner;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -86,7 +83,7 @@ public class SmartSpinner extends AppCompatTextView {
         int defaultPadding = getResources().getDimensionPixelSize(R.dimen.one_and_a_half_grid_unit);
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SmartSpinner);
-        textDrawableRes = typedArray.getResourceId(R.styleable.SmartSpinner_textDrawable, R.drawable.ic_text_selector);
+        textDrawableRes = typedArray.getResourceId(R.styleable.SmartSpinner_textDrawable, R.drawable.item_text_selector);
         textTint = typedArray.getColor(R.styleable.SmartSpinner_textTint, SmartUtil.getDefaultTextColor(context));
 
         isArrowHidden = typedArray.getBoolean(R.styleable.SmartSpinner_arrowHide, false);
@@ -225,7 +222,7 @@ public class SmartSpinner extends AppCompatTextView {
     }
 
     public void showPopupWindow(View anchor){
-        popupWindow.showAsDropDown(anchor, 0, 0);
+        popupWindow.showAsDropDown(anchor, 0, 10);
         popupWindow.setFocusable(true);
         popupWindow.setOutsideTouchable(true);
     }
@@ -247,7 +244,6 @@ public class SmartSpinner extends AppCompatTextView {
 
         popupWindow.setWidth(popupWidth);
         popupWindow.setHeight(popupHeight);
-
     }
 
 }

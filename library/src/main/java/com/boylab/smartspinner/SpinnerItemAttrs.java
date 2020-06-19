@@ -32,7 +32,7 @@ public class SpinnerItemAttrs {
         itemPaddingBottom = typedArray.getDimensionPixelSize(R.styleable.SmartSpinner_itemPaddingBottom, 0);
         itemPaddingRight = typedArray.getDimensionPixelSize(R.styleable.SmartSpinner_itemPaddingRight, 0);
 
-        itemDrawableResId = typedArray.getResourceId(R.styleable.SmartSpinner_itemDrawable, R.drawable.ic_text_selector);
+        itemDrawableResId = typedArray.getResourceId(R.styleable.SmartSpinner_itemDrawable, R.drawable.item_text_selector);
         itemGravity = SpinnerItemGravity.fromId(typedArray.getInt(R.styleable.SmartSpinner_ItemGravity, SpinnerItemGravity.CENTER.ordinal()));
         itemChecked = typedArray.getBoolean(R.styleable.SmartSpinner_itemChecked, false);
     }
