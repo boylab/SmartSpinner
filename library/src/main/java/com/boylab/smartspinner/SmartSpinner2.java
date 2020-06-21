@@ -37,7 +37,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
 /*
  * Copyright (C) 2015 Angelo Marchesin.
  *
@@ -150,7 +149,7 @@ public class SmartSpinner2 extends AppCompatTextView {
 
         isArrowHidden = typedArray.getBoolean(R.styleable.SmartSpinner_arrowHide, false);
         arrowTint = typedArray.getColor(R.styleable.SmartSpinner_arrowTint, getResources().getColor(android.R.color.black));
-        arrowDrawableRes = typedArray.getResourceId(R.styleable.SmartSpinner_arrowDrawable, R.drawable.smart_arrow);
+        arrowDrawableRes = typedArray.getResourceId(R.styleable.SmartSpinner_arrowDrawable, R.drawable.smart_arrow_default);
 
         numColumns = typedArray.getInt(R.styleable.SmartSpinner_numColumns, 1);
         numRows = typedArray.getInt(R.styleable.SmartSpinner_numRows, 1);
@@ -162,7 +161,7 @@ public class SmartSpinner2 extends AppCompatTextView {
         itemPaddingBottom = typedArray.getDimensionPixelSize(R.styleable.SmartSpinner_itemPaddingBottom, 0);
         itemPaddingRight = typedArray.getDimensionPixelSize(R.styleable.SmartSpinner_itemPaddingRight, 0);
 
-        itemDrawableResId = typedArray.getResourceId(R.styleable.SmartSpinner_itemDrawable, R.drawable.smart_arrow);
+        itemDrawableResId = typedArray.getResourceId(R.styleable.SmartSpinner_itemDrawable, R.drawable.smart_arrow_default);
         itemGravity = SpinnerItemGravity.fromId(typedArray.getInt(R.styleable.SmartSpinner_ItemGravity, SpinnerItemGravity.CENTER.ordinal()));
         itemChecked = typedArray.getBoolean(R.styleable.SmartSpinner_itemChecked, false);
 
@@ -209,7 +208,7 @@ public class SmartSpinner2 extends AppCompatTextView {
     public void initPopup(){
         //popupWindow = new PopupWindow(context);
         popupWindow = new PopupWindow(rootView);
-        Drawable drawable = ContextCompat.getDrawable(getContext(), R.drawable.smart_arrow);
+        Drawable drawable = ContextCompat.getDrawable(getContext(), R.drawable.smart_arrow_default);
         popupWindow.setBackgroundDrawable(drawable);
     //popupWindow.setContentView(rootView);
 
@@ -301,7 +300,7 @@ public class SmartSpinner2 extends AppCompatTextView {
 
     public void setArrowDrawable(@DrawableRes @ColorRes int drawableId) {
         arrowDrawableRes = drawableId;
-        arrowDrawable = initArrowDrawable(R.drawable.smart_arrow);
+        arrowDrawable = initArrowDrawable(R.drawable.smart_arrow_default);
         setArrowDrawableOrHide(arrowDrawable);
     }
 

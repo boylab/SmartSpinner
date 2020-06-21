@@ -93,7 +93,7 @@ public class SmartSpinner extends AppCompatTextView {
 
         isArrowHidden = typedArray.getBoolean(R.styleable.SmartSpinner_arrowHide, false);
         arrowTint = typedArray.getColor(R.styleable.SmartSpinner_arrowTint, getResources().getColor(android.R.color.black));
-        arrowDrawableRes = typedArray.getResourceId(R.styleable.SmartSpinner_arrowDrawable, R.drawable.smart_arrow);
+        arrowDrawableRes = typedArray.getResourceId(R.styleable.SmartSpinner_arrowDrawable, R.drawable.smart_arrow_default);
 
         numColumns = typedArray.getInt(R.styleable.SmartSpinner_numColumns, 2);
         numRows = typedArray.getInt(R.styleable.SmartSpinner_numRows, 1);
@@ -137,7 +137,7 @@ public class SmartSpinner extends AppCompatTextView {
 
     private void initPopupWindow(){
         popupWindow = new PopupWindow(rootView);
-        Drawable drawable = ContextCompat.getDrawable(getContext(), R.drawable.smart_arrow);
+        Drawable drawable = ContextCompat.getDrawable(getContext(), R.drawable.smart_arrow_default);
         popupWindow.setBackgroundDrawable(drawable);
 
         measureDisplayLocation();
@@ -242,5 +242,7 @@ public class SmartSpinner extends AppCompatTextView {
         popupWindow.setWidth(popupWidth);
         popupWindow.setHeight(popupHeight);
     }
+
+
 
 }
