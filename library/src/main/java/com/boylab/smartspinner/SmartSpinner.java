@@ -121,6 +121,9 @@ public class SmartSpinner extends AppCompatTextView {
         twoWayView = rootView.findViewById(R.id.spinner_TwoWayView);
         twoWayView.setHasFixedSize(true);
         twoWayView.setLongClickable(true);
+    }
+
+    private void initPopupWindow(){
 
         final Drawable divider = getResources().getDrawable(R.drawable.spinner_divider);
         int dividerWidth = divider.getIntrinsicWidth();
@@ -133,9 +136,7 @@ public class SmartSpinner extends AppCompatTextView {
             layoutManager = new GridLayoutManager(TwoWayLayoutManager.Orientation.VERTICAL, numColumns, numRows);
         }
         twoWayView.setLayoutManager(layoutManager);
-    }
 
-    private void initPopupWindow(){
         popupWindow = new PopupWindow(rootView);
         Drawable drawable = ContextCompat.getDrawable(getContext(), R.drawable.smart_arrow_default);
         popupWindow.setBackgroundDrawable(drawable);
@@ -243,6 +244,75 @@ public class SmartSpinner extends AppCompatTextView {
         popupWindow.setHeight(popupHeight);
     }
 
+    public int getTextDrawableRes() {
+        return textDrawableRes;
+    }
 
+    public void setTextDrawableRes(int textDrawableRes) {
+        this.textDrawableRes = textDrawableRes;
+    }
 
+    public int getTextTint() {
+        return textTint;
+    }
+
+    public void setTextTint(int textTint) {
+        this.textTint = textTint;
+    }
+
+    public boolean isArrowHidden() {
+        return isArrowHidden;
+    }
+
+    public void setArrowHidden(boolean arrowHidden) {
+        isArrowHidden = arrowHidden;
+    }
+
+    public int getArrowTint() {
+        return arrowTint;
+    }
+
+    public void setArrowTint(int arrowTint) {
+        this.arrowTint = arrowTint;
+    }
+
+    public int getArrowDrawableRes() {
+        return arrowDrawableRes;
+    }
+
+    public void setArrowDrawableRes(int arrowDrawableRes) {
+        this.arrowDrawableRes = arrowDrawableRes;
+    }
+
+    public int getNumColumns() {
+        return numColumns;
+    }
+
+    public void setNumColumns(int numColumns) {
+        this.numColumns = numColumns;
+    }
+
+    public int getNumRows() {
+        return numRows;
+    }
+
+    public void setNumRows(int numRows) {
+        this.numRows = numRows;
+    }
+
+    public SpinnerItemAttrs getItemAttrs() {
+        return itemAttrs;
+    }
+
+    public void setItemAttrs(SpinnerItemAttrs itemAttrs) {
+        this.itemAttrs = itemAttrs;
+    }
+
+    public List<CharSequence> getCharSequences() {
+        return charSequences;
+    }
+
+    public void setCharSequences(List<CharSequence> charSequences) {
+        this.charSequences = charSequences;
+    }
 }

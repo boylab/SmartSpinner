@@ -33,9 +33,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
         smartSpinner02 = findViewById(R.id.smart_Spinner02);
+        smartSpinner02.setNumColumns(3);
         smartSpinner02.attachDataSource(dataset);
 
         smartSpinner03 = findViewById(R.id.smart_Spinner03);
