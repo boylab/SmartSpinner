@@ -142,6 +142,8 @@ public class SmartSpinner extends AppCompatTextView {
         popupWindow.setBackgroundDrawable(drawable);
 
         measureDisplayLocation();
+        popupWindow.setFocusable(true);
+        popupWindow.setOutsideTouchable(false);
 
         popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
@@ -221,8 +223,6 @@ public class SmartSpinner extends AppCompatTextView {
 
     public void showPopupWindow(View anchor){
         popupWindow.showAsDropDown(anchor, 0, 10);
-        popupWindow.setFocusable(true);
-        popupWindow.setOutsideTouchable(true);
     }
 
     public void dismiss(){
