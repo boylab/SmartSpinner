@@ -244,6 +244,15 @@ public class SmartSpinner extends AppCompatTextView {
         popupWindow.setHeight(popupHeight);
     }
 
+    public int getSelectedItemPosition(){
+        return adapter.getSelectedIndex();
+    }
+
+    public void setSelection(int position){
+        adapter.setSelectedIndex(position);
+        setText(adapter.getSelectedValue());
+    }
+
     public int getTextDrawableRes() {
         return textDrawableRes;
     }

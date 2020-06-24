@@ -91,6 +91,10 @@ public class SmartViewAdapter extends RecyclerView.Adapter<SmartViewAdapter.Simp
         return list.size();
     }
 
+    public int getSelectedIndex() {
+        return selectedIndex;
+    }
+
     public String getSelectedValue() {
         if (selectedIndex >= 0 && selectedIndex <= getItemCount()) {
             return list.get(selectedIndex);
