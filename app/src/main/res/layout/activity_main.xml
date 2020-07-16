@@ -17,6 +17,7 @@
         android:textSize="20sp"
         app:arrowDrawable="@drawable/ic_smart_arrow"
         app:arrowTint="@android:color/darker_gray"
+        android:textColor="@android:color/black"
         app:itemHeight="50dp"
         app:itemWidth="160dp"
         app:numColumns="1" />

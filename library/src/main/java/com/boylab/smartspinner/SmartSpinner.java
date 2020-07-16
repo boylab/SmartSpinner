@@ -208,7 +208,9 @@ public class SmartSpinner extends AppCompatTextView {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (adapter.getItemCount() <= 0){
+        if (adapter == null){
+            return super.onTouchEvent(event);
+        }else if (adapter.getItemCount() <= 0){
             return super.onTouchEvent(event);
         }
         if (isEnabled() && event.getAction() == MotionEvent.ACTION_UP) {
@@ -249,6 +251,9 @@ public class SmartSpinner extends AppCompatTextView {
     }
 
     public void setSelection(int position){
+        if (adapter == null){
+            return;
+        }
         adapter.setSelectedIndex(position);
         setText(adapter.getSelectedValue());
     }

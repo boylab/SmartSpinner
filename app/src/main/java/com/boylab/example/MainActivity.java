@@ -40,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
         smartSpinner03 = findViewById(R.id.smart_Spinner03);
         smartSpinner03.attachDataSource(dataset);
 
+        smartSpinner01.setSelection(0);
+
+
     }
 
 }
