@@ -63,7 +63,7 @@ public class SmartViewAdapter extends RecyclerView.Adapter<SmartViewAdapter.Simp
         this.mContext = mContext;
         this.itemAttrs = itemAttrs;
         this.list = list;
-        Log.i(">>>boylab>>", ">>>SmartViewAdapter: "+itemAttrs.toString());
+        //Log.i(">>>boylab>>", ">>>SmartViewAdapter: "+itemAttrs.toString());
     }
 
     @Override

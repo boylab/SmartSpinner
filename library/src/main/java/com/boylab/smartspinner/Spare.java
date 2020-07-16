@@ -347,8 +347,8 @@ public class Spare extends AppCompatTextView {
 
                 setText(adapter.getSelectedValue());
 
-                Log.i(">>>boylab>>", ">>>onItemSelected: popupWindow.isShowing() = "+popupWindow.isShowing());
-                Log.i(">>>boylab>>", ">>>onItemSelected: popupWindow.isTouchable() = "+isFocusable());
+                //Log.i(">>>boylab>>", ">>>onItemSelected: popupWindow.isShowing() = "+popupWindow.isShowing());
+                //Log.i(">>>boylab>>", ">>>onItemSelected: popupWindow.isTouchable() = "+isFocusable());
                 dismissDropDown();
             }
 
@@ -386,8 +386,8 @@ public class Spare extends AppCompatTextView {
         if (!isArrowHidden) {
             animateArrow(false);
         }
-        Log.i(">>>boylab>>", "dismissDropDown: "+popupWindow);
-        Log.i(">>>boylab>>", "dismissDropDown: "+popupWindow.isFocusable());
+        //Log.i(">>>boylab>>", "dismissDropDown: "+popupWindow);
+        //Log.i(">>>boylab>>", "dismissDropDown: "+popupWindow.isFocusable());
         popupWindow.dismiss();
 
     }
@@ -399,8 +399,8 @@ public class Spare extends AppCompatTextView {
 
         setFocusable(false);
         popupWindow.showAsDropDown(this, 0, 0);
-        Log.i(">>>boylab>>", ">>>showDropDown: popupWindow.isShowing() = "+popupWindow.isShowing());
-        Log.i(">>>boylab>>", ">>>showDropDown: popupWindow.isTouchable() = "+popupWindow.isTouchable());
+        //Log.i(">>>boylab>>", ">>>showDropDown: popupWindow.isShowing() = "+popupWindow.isShowing());
+        //Log.i(">>>boylab>>", ">>>showDropDown: popupWindow.isTouchable() = "+popupWindow.isTouchable());
 
         /*final RelativeLayout wayView = (RelativeLayout) popupWindow.getContentView();
         if (wayView != null) {

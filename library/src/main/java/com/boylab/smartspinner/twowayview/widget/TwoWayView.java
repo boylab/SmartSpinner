@@ -120,7 +120,7 @@ public class TwoWayView extends RecyclerView {
         /*TwoWayLayoutManager layout = (TwoWayLayoutManager) getLayoutManager();
         super.onMeasure(widthSpec, heightSpec);*/
 
-        Log.i(">>>boylab>>11", ">>>onClick: widthSpec ="+widthSpec+" >>>>> heightSpec ="+heightSpec);
+        //Log.i(">>>boylab>>11", ">>>onClick: widthSpec ="+widthSpec+" >>>>> heightSpec ="+heightSpec);
         super.onMeasure(widthSpec, heightSpec);
 
         /*if (mLayout == null) {
