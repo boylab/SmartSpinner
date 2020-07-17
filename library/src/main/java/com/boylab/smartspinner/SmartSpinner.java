@@ -121,15 +121,16 @@ public class SmartSpinner extends AppCompatTextView {
         twoWayView = rootView.findViewById(R.id.spinner_TwoWayView);
         twoWayView.setHasFixedSize(true);
         twoWayView.setLongClickable(true);
-    }
-
-    private void initPopupWindow(){
 
         final Drawable divider = getResources().getDrawable(R.drawable.spinner_divider);
         int dividerWidth = divider.getIntrinsicWidth();
         int dividerHeight = divider.getIntrinsicHeight();
 
         twoWayView.addItemDecoration(new DividerItemDecoration(divider));
+    }
+
+    private void initPopupWindow(){
+
         if (numColumns == 1) {
             layoutManager = new ListLayoutManager(getContext(), TwoWayLayoutManager.Orientation.VERTICAL);
         } else {
