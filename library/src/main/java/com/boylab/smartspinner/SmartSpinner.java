@@ -43,7 +43,7 @@ public class SmartSpinner extends AppCompatTextView {
     private int numColumns = 1, numRows;
 
     private SpinnerItemAttrs itemAttrs = new SpinnerItemAttrs();
-    private List<CharSequence> charSequences;
+    private List<String> charSequences = new ArrayList<String>();
 
     private PopupWindow popupWindow;
     private ViewGroup rootView;
@@ -101,8 +101,13 @@ public class SmartSpinner extends AppCompatTextView {
 
         // TODO: 2019/12/4 need to use
         CharSequence[] entries = typedArray.getTextArray(R.styleable.SmartSpinner_entries);
-        charSequences = ((entries == null) ? new ArrayList<CharSequence>() : Arrays.asList(entries));
-
+        if (entries == null){
+            charSequences = new ArrayList<String>();
+        }else {
+            for (CharSequence chars:entries) {
+                charSequences.add(chars.toString());
+            }
+        }
         typedArray.recycle();
     }
 
@@ -127,6 +132,10 @@ public class SmartSpinner extends AppCompatTextView {
         int dividerHeight = divider.getIntrinsicHeight();
 
         twoWayView.addItemDecoration(new DividerItemDecoration(divider));
+
+        if (!charSequences.isEmpty()){
+            attachDataSource();
+        }
     }
 
     private void initPopupWindow(){
@@ -172,19 +181,24 @@ public class SmartSpinner extends AppCompatTextView {
         parentVerticalOffset = location[1];
         int measuredHeight = getMeasuredHeight();
         int remainHeight = displayHeight - parentVerticalOffset - measuredHeight;
-
     }
 
     public void attachDataSource(@NonNull List<String> list) {
-        if (list.isEmpty()){
+        if (list.isEmpty()) {
             return;
         }
-        setText(list.get(0));
+        charSequences.clear();
+        charSequences.addAll(list);
+        attachDataSource();
+    }
+
+    private void attachDataSource() {
+        setText(charSequences.get(0));
         initPopupWindow();
 
-        freshPopupWindow(list.size());
+        freshPopupWindow(charSequences.size());
 
-        adapter = new SmartViewAdapter(getContext(), itemAttrs, list);
+        adapter = new SmartViewAdapter(getContext(), itemAttrs, charSequences);
         twoWayView.setAdapter(adapter);
 
         adapter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -323,11 +337,11 @@ public class SmartSpinner extends AppCompatTextView {
         this.itemAttrs = itemAttrs;
     }
 
-    public List<CharSequence> getCharSequences() {
+    public List<String> getCharSequences() {
         return charSequences;
     }
 
-    public void setCharSequences(List<CharSequence> charSequences) {
+    public void setCharSequences(List<String> charSequences) {
         this.charSequences = charSequences;
     }
 }

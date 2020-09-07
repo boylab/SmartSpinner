@@ -34,8 +34,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         smartSpinner02 = findViewById(R.id.smart_Spinner02);
-        smartSpinner02.setNumColumns(3);
-        smartSpinner02.attachDataSource(dataset);
+        // TODO: 2020/9/7 重复设置
+        /*smartSpinner02.setNumColumns(3);
+        smartSpinner02.attachDataSource(dataset);*/
+        smartSpinner02.setSelection(2);
+
 
         smartSpinner03 = findViewById(R.id.smart_Spinner03);
         smartSpinner03.attachDataSource(dataset);
