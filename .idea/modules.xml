@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SmartSpinner.iml" filepath="$PROJECT_DIR$/SmartSpinner.iml" group="SmartSpinner" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SmartSpinner-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SmartSpinner-app.iml" group="SmartSpinner/app" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/library/SmartSpinner-library.iml" filepath="$PROJECT_DIR$/.idea/modules/library/SmartSpinner-library.iml" group="SmartSpinner/library" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="SmartSpinner/app" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/boylab-SmartSpinner.iml" filepath="$PROJECT_DIR$/.idea/modules/boylab-SmartSpinner.iml" group="SmartSpinner" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/boylab-SmartSpinner-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/boylab-SmartSpinner-app.iml" group="SmartSpinner/app" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/library/boylab-SmartSpinner-library.iml" filepath="$PROJECT_DIR$/.idea/modules/library/boylab-SmartSpinner-library.iml" group="SmartSpinner/library" />
-      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" group="SmartSpinner/library" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SmartSpinner.iml" filepath="$PROJECT_DIR$/.idea/modules/SmartSpinner.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SmartSpinner.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SmartSpinner.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/library/SmartSpinner.library.iml" filepath="$PROJECT_DIR$/.idea/modules/library/SmartSpinner.library.iml" />
     </modules>
   </component>
 </project>

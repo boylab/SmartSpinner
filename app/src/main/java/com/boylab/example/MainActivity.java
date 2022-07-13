@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         smartSpinner01 = findViewById(R.id.smart_Spinner01);
+        smartSpinner01.setEnabled(false);
         List<String> dataset = new LinkedList<>(Arrays.asList("One", "Two", "Three", "Four", "Five", "Six", "Seven"));
         smartSpinner01.attachDataSource(dataset);
         smartSpinner01.setOnSpinnerItemListener(new OnSpinnerItemListener() {
